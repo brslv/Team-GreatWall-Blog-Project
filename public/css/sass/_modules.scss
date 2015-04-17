@@ -1,0 +1,33 @@
+/**
+ * modules.scss
+ *
+ * Defines modules used in this app.
+ *
+ */
+
+// Navs
+.nav {
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        
+        li {
+            margin-right: 1.2em;
+            display: inline-block;
+        }
+    }
+}
+
+// Buttons
+.btn {
+    display: inline-block;
+    padding: 15px;
+    background: $c-accent;
+    color: $c-light;
+    
+    &:hover {
+        color: $c-light;
+        background: $c-accent-hover;
+    }
+}

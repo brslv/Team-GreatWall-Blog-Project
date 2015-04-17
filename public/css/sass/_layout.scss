@@ -1,0 +1,89 @@
+/**
+ * layout.scss
+ *
+ * Defines some layout related styles.
+ *
+ */
+
+// Top
+.header {
+    color: $c-light;
+    padding: $base-gutter 0;
+    background-image: url("../img/hero-darker.jpg");
+    background-size: cover;
+}
+
+.welcome {
+    h5 {
+        margin-top: 0;
+    }
+    
+    padding: $base-gutter * 2;
+}
+
+// Middle
+.main {
+    border: 1px solid $c-mid;
+    margin-top: $base-gutter;
+    margin-bottom: $base-gutter;
+    padding: $base-gutter $base-gutter;
+}
+
+.post {
+    margin-bottom: $base-gutter;
+    padding-bottom: $base-gutter / 2;
+    border-bottom: 1px solid $c-mid;
+    
+    &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.post-meta {
+    padding-bottom: $base-gutter / 3;
+}
+
+.post-content {
+    padding: $base-gutter / 2 0;
+}
+
+.pagination {
+    font-weight: 800;
+    
+    a {
+        color: $c-light;
+        
+        &:hover{
+            color: $c-light;
+        }
+    }
+    
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+            
+        li {
+            display: inline-block;
+            background: $c-accent;
+            padding: 8px 15px;
+            
+            &:hover {
+                background: $c-accent-hover;
+            }
+        }
+    }
+}
+
+.read-more {
+    padding-top: $base-gutter / 3;
+}
+
+// Bottom
+.footer {
+    color: $c-mid - 50;
+    font-size: 12px;
+    padding-bottom: $base-gutter;
+}
