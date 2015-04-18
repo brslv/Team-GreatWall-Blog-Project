@@ -3,12 +3,19 @@
     <main class="main container row">
         <section class="twelve columns">
             <div class="register-container">
+                <?php
+                if (!empty ($data)) {
+                    foreach ( $data as $d) {
+                        echo $d;
+                    }
+                }
+                ?>
                 <h3>Register: </h3>
-                <form action="action" method="POST">
+                <form action="" method="POST">
                     <input type="text" name="username" placeholder="Username" /><br />
                     <input type="password" name="password" placeholder="Password" /><br />
                     <input type="email" name="email" placeholder="Email"><br />
-                    <input type="submit" name="loginSubmit" value="C'mon" />
+                    <input type="submit" name="registerSubmit" value="C'mon" />
                 </form>
             </div>
         </section>

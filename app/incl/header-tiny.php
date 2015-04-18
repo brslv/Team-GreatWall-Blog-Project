@@ -4,7 +4,7 @@
     <title>This is the blog.</title>
     
     <!-- HARDCODE THE STYLE URL: -->
-    <link rel="stylesheet" href="http://localhost/sites/SUProject/1/public/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="http://localhost/GreatWall/trunk/public/css/style.css" type="text/css" />
 <body>
     <header class="header u-text-center">
         <div class="container">
@@ -13,6 +13,8 @@
                     <li><a href="">Home</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Contacts</a></li>
+                    <li><a href="http://localhost/GreatWall/trunk/public/home/login">Login</a></li>
+                    <li><a href="http://localhost/GreatWall/trunk/public/home/register">Register</a></li>
                 </ul>
             </nav>
         </div>

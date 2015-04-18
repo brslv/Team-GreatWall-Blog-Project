@@ -5,7 +5,7 @@ class MainModel extends Db {
    
     /**
      *
-     * @var PDO
+     * @var \PDO
      */
     protected $db;
 
