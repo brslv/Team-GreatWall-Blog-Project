@@ -4,7 +4,7 @@
     <title>This is the blog.</title>
     
     <!-- HARDCODE THE STYLE URL: -->
-    <link rel="stylesheet" href="http://localhost/GreatWall/trunk/public/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="http://localhost/Teamwork Blog/Team-GreatWall-Blog-Project/public/css/style.css" type="text/css" />
 <body>
     <header class="header u-text-center">
         <div class="container">

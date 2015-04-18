@@ -31,6 +31,7 @@ class UserModel extends MainModel
      */
     public function register()
     {
+
         if (!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password']) && !empty($_POST['email'])) {
             $username = $_POST['username'];
             $firstname = $_POST['firstname'];
@@ -42,7 +43,14 @@ class UserModel extends MainModel
             // 2.
             // 3.
             $query = $this->db->prepare('INSERT INTO users(username, firstname, lastname, password, email) VALUES(:username, :firstname, :lastname, :password, :email)');
-            return  $query->execute([':username'=>$username, ':firstname'=>$firstname, ':lastname'=>$lastname, ':password'=>$password, ':email'=>$email]);
+
+            return  $query->execute([
+                ':username'=>$username,
+                ':firstname'=>$firstname,
+                ':lastname'=>$lastname,
+                ':password'=>$password,
+                ':email'=>$email
+            ]);
 
         }
 
