@@ -936,6 +936,11 @@ a {
 .read-more {
   padding-top: 16.66667px; }
 
+.login-container,
+.register-container {
+  text-align: center;
+  margin: 0 auto; }
+
 .footer {
   color: #bcbcbc;
   font-size: 12px;

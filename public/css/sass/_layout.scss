@@ -77,8 +77,14 @@
     }
 }
 
-.read-more {
+.read-more { 
     padding-top: $base-gutter / 3;
+}
+
+.login-container,
+.register-container{
+    text-align: center;
+    margin: 0 auto;
 }
 
 // Bottom
