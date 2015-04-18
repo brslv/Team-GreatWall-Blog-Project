@@ -54,21 +54,21 @@ class App
 		// This gives us access to the methods of this controller.
 		$this->controller = new $this->controller;
 
-        if (isset($url[1])) {
-            if (method_exists($this->controller, $url[1])) {
-            	// If this controller has the provided method...
-                $this->method = $url[1];
-                unset($url[1]);
-            }
-        }
+                if (isset($url[1])) {
+                    if (method_exists($this->controller, $url[1])) {
+                        // If this controller has the provided method...
+                        $this->method = $url[1];
+                        unset($url[1]);
+                    }
+                }
 
-        if (!empty($url)) {
-        	// And if the user provided some parameters for this method....
-            $this->params = array_values($url);
-        }
+                if (!empty($url)) {
+                        // And if the user provided some parameters for this method....
+                    $this->params = array_values($url);
+                }
 
-        // Call the method with these parameters.
-        call_user_func([$this->controller, $this->method], $this->params);
+                // Call the method with these parameters.
+                call_user_func([$this->controller, $this->method], $this->params);
 	}
 
 	/**

@@ -1,5 +1,7 @@
 <?php require_once '../app/incl/header-tiny.php'; ?> 
 
+    if(isset$data) ... print
+
     <main class="main container row">
         <section class="twelve columns">
             <article>

@@ -50,10 +50,10 @@ class Config
 
         $cnf = [
             "db" => [
-                "host" => "127.0.0.1",
+                "host" => "localhost",
                 "dbuser" => "root",
-                "dbpass" => "",
-                "dbname" => ""
+                "dbpass" => "root",
+                "dbname" => "great_wall_blog"
             ],
             
             "paths" => [
@@ -62,7 +62,6 @@ class Config
                 "models" => "../app/models/",
                 "views" => "../app/views/",
             ]
-            
             
         ];
         

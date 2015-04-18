@@ -8,7 +8,7 @@ users
 |_password          // hash it
 |_first_name
 |_last_name
-|_role
+|_role              // admin, user
 
 posts
 -----
@@ -45,8 +45,6 @@ SELECT a.article_title
         INNER JOIN Article a
             ON atx.article_id = a.article_id
     WHERE t.tag_name = 'SelectedTagName'
-
-
 
 pages
 -----
