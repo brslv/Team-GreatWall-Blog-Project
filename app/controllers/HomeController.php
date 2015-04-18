@@ -3,7 +3,7 @@
 class Home extends Main{
 
 	public function index() {
-        $this->getView('addpostView');
-            //$this->getView('adminView');
+        $this->getView('homeView');
+//            $this->getView('adminView');
     }
 }
