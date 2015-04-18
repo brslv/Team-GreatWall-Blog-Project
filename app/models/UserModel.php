@@ -25,18 +25,24 @@ class UserModel extends MainModel
         }
 
     }
+
+    /**
+     * @return bool
+     */
     public function register()
     {
-        if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
+        if (!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password']) && !empty($_POST['email'])) {
             $username = $_POST['username'];
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
             $password = $_POST['password'];
             $email = $_POST['email'];
             //$email = $_POST['email'];
             // 1.
             // 2.
             // 3.
-            $query = $this->db->prepare('INSERT INTO users(username, password, email) VALUES(:username, :password, :email)');
-            return  $query->execute([':username'=>$username, ':password'=>$password, ':email'=>$email]);
+            $query = $this->db->prepare('INSERT INTO users(username, firstname, lastname, password, email) VALUES(:username, :firstname, :lastname, :password, :email)');
+            return  $query->execute([':username'=>$username, ':firstname'=>$firstname, ':lastname'=>$lastname, ':password'=>$password, ':email'=>$email]);
 
         }
 

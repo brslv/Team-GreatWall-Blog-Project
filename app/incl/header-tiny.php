@@ -13,8 +13,8 @@
                     <li><a href="">Home</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Contacts</a></li>
-                    <li><a href="http://localhost/GreatWall/trunk/public/home/login">Login</a></li>
-                    <li><a href="http://localhost/GreatWall/trunk/public/home/register">Register</a></li>
+                    <li><a href="http://localhost/GreatWall/trunk/public/user/login">Login</a></li>
+                    <li><a href="http://localhost/GreatWall/trunk/public/user/register">Register</a></li>
                 </ul>
             </nav>
         </div>

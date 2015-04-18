@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2015 at 05:27 PM
+-- Generation Time: Apr 18, 2015 at 08:14 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -93,23 +93,19 @@ CREATE TABLE IF NOT EXISTS `users` (
 `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(60) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(60) NOT NULL,
   `role` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `role`, `email`) VALUES
-(1, 'kate', '123', 'Katerina', 'Noteva', '0', ''),
-(2, 'gogo', '123', '', '', '', ''),
-(12, 'bobi', '123', '', '', '', ''),
-(13, 'didi', '123', '', '', '', 'a@abv.bg'),
-(15, 'roni', '123', '', '', '', ''),
-(17, 'hihi', '', '', '', '', '');
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`, `email`) VALUES
+(1, 'katerina', '123', 'Katerina', 'Noteva', '1', 'k@abv.bg'),
+(18, 'bobi', '123', 'Borislav', 'Nikolov', '', 'b@abv.bg');
 
 --
 -- Indexes for dumped tables
@@ -173,7 +169,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
