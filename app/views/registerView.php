@@ -1,7 +1,6 @@
 <?php require_once '../app/incl/header-tiny.php'; ?> 
 
     <main class="main container row">
-        
         <section class="twelve columns">
             <div class="register-container">
                 <?php
