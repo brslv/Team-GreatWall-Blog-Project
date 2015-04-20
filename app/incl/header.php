@@ -4,7 +4,7 @@
     <title>This is the blog.</title>
     
     <!-- HARDCODE THE STYLE URL: -->
-    <link rel="stylesheet" href="http://localhost/sites/SUProject/1/public/css/style.css" type="text/css"  />
+    <link rel="stylesheet" href="http://localhost/GreatWall/trunk/public/css/style.css" type="text/css"  />
     <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script>
         tinymce.init({
