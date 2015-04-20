@@ -30,4 +30,10 @@ class PostModel extends MainModel {
 
     }
 
+    public function getPosts(){
+        $allVisiblePosts = $this->db->query('SELECT * FROM posts WHERE status=1 ORDER BY id DESC');
+        $fetchedPosts = $allVisiblePosts->fetchAll(PDO::FETCH_ASSOC);
+        return $fetchedPosts;
+    }
+
 }
