@@ -17,16 +17,7 @@
         <div class="container">
             <nav class="top-nav nav">
                 <ul class="u-upper u-bold">
-                    <?php //TODO: Dynamically generate menu ?>
-                    <li><a href="<?php echo Config::get('paths', 'root') ?>page/">Home</a></li>
-                    <li><a href="<?php echo Config::get('paths', 'root') ?>page/">About</a></li>
-                    <li><a href="<?php echo Config::get('paths', 'root') ?>page/">Contacts</a></li>
-                    <?php if(!isset($_SESSION['username'])) : ?>
-                        <li><a href="<?php echo Config::get('paths', 'root') ?>user/login">Login</a></li>
-                        <li><a href="<?php echo Config::get('paths', 'root') ?>user/register">Register</a></li>
-                    <?php else : ?>
-                        <li><a href="<?php echo Config::get('paths', 'root') ?>user/logout">Logout (<?php echo $_SESSION['username']; ?>)</a></li>
-                    <?php endif; ?>
+                    <?php include Config::get('paths', 'incl') . 'navigation.php'; ?>
                 </ul>
             </nav>
         </div>

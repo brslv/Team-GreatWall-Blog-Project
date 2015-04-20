@@ -3,8 +3,7 @@
 class User extends Main {
 
     public function index() {
-        // TODO: Show user profile if session exists.
-        Redirect::to('homepage');
+        Redirect::to('user/me');
     }
 
     /**
@@ -61,6 +60,9 @@ class User extends Main {
         $this->getView('profileView');
     }
     
+    /**
+     * Destries the session and redirects to the homepage
+     */
     public function logout() {
         session_destroy();
         session_unset('username');

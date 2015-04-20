@@ -52,7 +52,7 @@ class Config
             "db" => [
                 "host" => "localhost",
                 "dbuser" => "root",
-                "dbpass" => "",
+                "dbpass" => "root",
                 "dbname" => "great_wall_blog"
             ],
             
@@ -61,6 +61,7 @@ class Config
                 "controllers" => "../app/controllers/",
                 "models" => "../app/models/",
                 "views" => "../app/views/",
+                "incl" => "../app/incl/"
             ]
             
         ];
