@@ -14,8 +14,9 @@ class Post extends Main {
         if($id == null) {
             Redirect::to('homepage');
         }
-        
-        // TODO: implement show post by id functionality.
+        else {
+            // TODO: implement show post by id functionality.
+        }
     }
 
 }

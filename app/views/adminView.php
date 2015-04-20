@@ -1,27 +1,30 @@
 <?php require_once '../app/incl/header-tiny.php'; ?> 
 
     <main class="main container row">
-        <section class="twelve columns u-text-center">
-            <?php //TODO: Style the .admin-row ?>
-            <div class="admin-row">
-                <h2 class="u-bold"><a href="admin/addPost">Add new post &rarr;</a></h2>
-            </div>
+        <section class="eight columns">
+            <?php // TODO: Style the form. ?>
+            <h5>Add new post: </h5>
+          
+            <?php 
+                // TODO: style the message.
+                echo $data[0]; 
+            ?>
             
-            <div class="admin-row">
-                <h2 class="u-bold"><a href="">Add new category &rarr;</a></h2>
-            </div>
+            <form action="" method="POST">
+                <input type="text" name="postTitle" placeholder="Enter title" /> <br />
+                <textarea name="postContent" placeholder="Enter post content"></textarea> <br />
+                <input type="submit" name="postSubmit" placeholder="Submit" />
+            </form>
+        </section>
+        
+        <section class="four columns">
+            <h5>More options: </h5>
             
-            <div class="admin-row">
-                <h2 class="u-bold"><a href="">Add new post &rarr;</a></h2>
-            </div>
-            
-            <div class="admin-row">
-                <h2 class="u-bold"><a href="">Manage posts &rarr;</a></h2>
-            </div>
-            
-            <div class="admin-row">
-                <h2 class="u-bold"><a href="">Manage pages &rarr;</a></h2>
-            </div>
+            <ul>
+                <li><a href="">Manage posts</a></li>
+                <li><a href="">Manage categories</a></li>
+                <li><a href="">Manage tags</a></li>
+            </ul>
         </section>
     </main>
     

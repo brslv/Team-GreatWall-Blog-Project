@@ -3,14 +3,6 @@
 class Admin extends Main {
     
     public function index() {
-        $this->getView('adminView');
-    }
-    
-    /**
-     * Adds a post to the database
-     * 
-     */
-    public function addPost() {
         $text = null;
 
         if (isset($_POST['postSubmit'])) {
@@ -21,11 +13,11 @@ class Admin extends Main {
             if ($result) {
                 $text = ['Post added successfully :)'];
             } else {
-                $text = ['Post not added successfully :('];
+                $text = ['Don\'t cheat, bro! Fill in all the blanks.'];
             }
         }
-
-        $this->getView('addpostView', $text);
+        
+        $this->getView('adminView', $text);
     }
     
 }
