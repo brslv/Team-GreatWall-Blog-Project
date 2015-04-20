@@ -3,6 +3,8 @@
 class Admin extends Main {
     
     public function index() {
+        $model = $this->getModel('UserModel');
+        $model->isAdmin();
         $text = null;
 
         if (isset($_POST['postSubmit'])) {
@@ -16,8 +18,8 @@ class Admin extends Main {
                 $text = ['Don\'t cheat, bro! Fill in all the blanks.'];
             }
         }
-        
         $this->getView('adminView', $text);
     }
     
 }
+

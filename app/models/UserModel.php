@@ -17,6 +17,8 @@ class UserModel extends MainModel
             $query = $this->db->prepare('SELECT * fROM users WHERE username=:username AND password=:password');
             $query->execute([':username'=>$username, ':password'=>$password]);
             $user = $query->fetchAll(PDO::FETCH_OBJ);
+            //var_dump($user);
+           // die();
             return $user;
         }
         
@@ -29,6 +31,7 @@ class UserModel extends MainModel
      */
     public function register()
     {
+        //TODO: Each user can add comments
 
         if (!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password']) && !empty($_POST['email'])) {
             $username = $_POST['username'];
@@ -36,18 +39,26 @@ class UserModel extends MainModel
             $lastname = $_POST['lastname'];
             $password = $_POST['password'];
             $email = $_POST['email'];
-            
-            $query = $this->db->prepare('INSERT INTO users(username, firstname, lastname, password, email) VALUES(:username, :firstname, :lastname, :password, :email)');
+            $role = 'user';
+            $query = $this->db->prepare('INSERT INTO users(username, firstname, lastname, password, email, role) VALUES(:username, :firstname, :lastname, :password, :email, :role)');
 
             return $query->execute([
                 ':username'=>$username,
                 ':firstname'=>$firstname,
                 ':lastname'=>$lastname,
                 ':password'=>$password,
-                ':email'=>$email
+                ':email'=>$email,
+                ':role' => $role
             ]);
 
         }
 
+    }
+    public function isAdmin() {
+        if (isset($_SESSION['username'])) {
+            if (!$_SESSION['role'] == 'admin') {
+                Redirect::to('homepage');
+            }
+        }
     }
 }

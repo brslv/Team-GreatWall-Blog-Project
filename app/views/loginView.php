@@ -2,6 +2,11 @@
     <main class="main container row">
         <section class="twelve columns">
             <div class="login-container">
+                <?php
+                if (!empty ($data)) {
+                    echo $data[0];
+                }
+                ?>
                 <h3>Login: </h3>
                 <form action="" method="POST">
                     <input type="text" name="username" placeholder="Username" /> <br />
