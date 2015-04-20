@@ -2,18 +2,25 @@
 
     <main class="main container row">
         <section class="eight columns">
-            <?php // TODO: Style the form. ?>
             <h5>Add new post: </h5>
           
-            <?php 
-                // TODO: style the message.
-                echo $data[0]; 
-            ?>
+            <?php if($data[0] != null) : ?>
+                <div class="msg">
+                    <?php echo $data[0]; ?>
+                </div>
+            <?php endif; ?>
             
             <form action="" method="POST">
-                <input type="text" name="postTitle" placeholder="Enter title" /> <br />
-                <textarea name="postContent" placeholder="Enter post content"></textarea> <br />
-                <input type="submit" name="postSubmit" placeholder="Submit" />
+                <input type="text" name="postTitle" class="full-input" placeholder="Enter title" /> <br />
+                <textarea name="postContent" class="full-textarea" placeholder="Enter post content"></textarea> <br />
+                <?php // TODO: Add category select option. ?>
+                <label for="postVisibility">Post visibility: </label>
+                <select name="postVisibility">
+                    <option value="1">Public</option>
+                    <option value="0">Private</option>
+                </select>
+                <br />
+                <input type="submit" name="postSubmit" value="Submit post" />
             </form>
         </section>
         
@@ -23,7 +30,7 @@
             <ul>
                 <li><a href="">Manage posts</a></li>
                 <li><a href="">Manage categories</a></li>
-                <li><a href="">Manage tags</a></li>
+                <li><a href="">Manage pages</a></li>
             </ul>
         </section>
     </main>

@@ -5,6 +5,13 @@
     
     <!-- HARDCODE THE STYLE URL: -->
     <link rel="stylesheet" href="http://localhost/sites/SUProject/1/public/css/style.css" type="text/css"  />
+    <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector:'textarea',
+        });
+    </script>
+    
 <body>
     <header class="header u-text-center">
         <div class="container">

@@ -1,3 +1,3 @@
-app/incl/header.php
-app/incl/header-tiny.php
-app/models/Config.php
+Added post visibility functionality; Added tinymce; Styled the post-adding success/fail message;
+
+

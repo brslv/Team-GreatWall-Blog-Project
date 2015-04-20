@@ -4,8 +4,8 @@
             <div class="login-container">
                 <h3>Login: </h3>
                 <form action="" method="POST">
-                    <input type="text" name="username" placeholder="Username" />
-                    <input type="password" name="password" placeholder="Password" />
+                    <input type="text" name="username" placeholder="Username" /> <br />
+                    <input type="password" name="password" placeholder="Password" /> <br />
                     <input type="submit" name="loginSubmit" value="Login" />
                 </form>
             </div>
