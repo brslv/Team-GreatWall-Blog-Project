@@ -52,12 +52,12 @@ class Config
             "db" => [
                 "host" => "localhost",
                 "dbuser" => "root",
-                "dbpass" => "",
+                "dbpass" => "root",
                 "dbname" => "great_wall_blog"
             ],
             
             "paths" => [
-                "root" => '/public/',
+                "root" => $publicFolder,
                 "controllers" => "../app/controllers/",
                 "models" => "../app/models/",
                 "views" => "../app/views/",

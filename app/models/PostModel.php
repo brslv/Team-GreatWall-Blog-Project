@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * PostModel class.
+ */
 class PostModel extends MainModel {
 
+    /**
+     * Adds new post to the database.
+     * 
+     * @return boolean
+     */
     public function addPost(){
 
         if(!empty($_POST['postTitle']) && !empty($_POST['postContent'])) {
