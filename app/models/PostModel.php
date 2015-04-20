@@ -18,8 +18,8 @@ class PostModel extends MainModel {
             
             return $insertInfo->execute([
                 ':postTitle' => filter_input(INPUT_POST, 'postTitle'),
-                ':postContent' => filter_input(INPUT_POST, 'postTitle'),
-                ':postExcerpt' => trim(substr(filter_input(INPUT_POST, 'postTitle'), 0, 100))."...",
+                ':postContent' => filter_input(INPUT_POST, 'postContent'),
+                ':postExcerpt' => trim(substr(filter_input(INPUT_POST, 'postContent'), 0, 500))."...",
                 ':postDate' => date('Y-m-d'),
                 ':status' => (int) $_POST['postVisibility']
             ]);

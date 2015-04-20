@@ -916,6 +916,17 @@ a {
 .post-content {
   padding: 25px 0; }
 
+.profile-name {
+  font-size: 4em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 41.66667px;
+  margin-bottom: 41.66667px; }
+
+.profile-msg {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee; }
+
 .pagination {
   font-weight: 800; }
   .pagination a {

@@ -49,6 +49,19 @@
     padding: $base-gutter / 2 0;
 }
 
+.profile-name {
+    font-size: 4em;
+    border-bottom: 1px solid $c-mid;
+    padding-bottom: $base-gutter / 1.2;
+    margin-bottom: $base-gutter / 1.2;
+}
+
+.profile-msg {
+    padding-bottom: $base-gutter / 2;
+    margin-bottom: $base-gutter / 2;
+    border-bottom: 1px solid $c-mid;
+}
+
 .pagination {
     font-weight: 800;
     
