@@ -15,7 +15,9 @@ class Post extends Main {
             Redirect::to('homepage');
         }
         else {
-            // TODO: implement show post by id functionality.
+            $model = $this->getModel('PostModel');
+            $post = $model->getPostById($id[0]);
+            $this->getView('singleView', $post);
         }
     }
 
