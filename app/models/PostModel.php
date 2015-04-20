@@ -16,12 +16,13 @@ class PostModel extends MainModel
 
         if (!empty($_POST['postTitle']) && !empty($_POST['postContent'])) {
 
-            $insertInfo = $this->db->prepare('INSERT INTO posts(title, content, excerpt, publish_date, status) VALUE (:postTitle, :postContent, :postExcerpt, :postDate, :status)');
+            $insertInfo = $this->db->prepare('INSERT INTO posts(title, content, excerpt,author_id, publish_date, status) VALUE (:postTitle, :postContent, :postExcerpt,:postAuthorId, :postDate, :status)');
 
             return $insertInfo->execute([
                 ':postTitle' => filter_input(INPUT_POST, 'postTitle'),
                 ':postContent' => filter_input(INPUT_POST, 'postContent'),
                 ':postExcerpt' => trim(substr(filter_input(INPUT_POST, 'postContent'), 0, 500)) . "...",
+                ':postAuthorId' => $_SESSION['id'],
                 ':postDate' => date('Y-m-d'),
                 ':status' => (int)$_POST['postVisibility']
             ]);
