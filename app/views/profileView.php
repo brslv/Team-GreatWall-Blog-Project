@@ -5,9 +5,9 @@
                 <div><h2 class="profile-name u-text-center"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></h2></div>
                 <h4 class="profile-msg u-text-center">
                     <?php if($_SESSION['role'] == 'admin') : ?>
-                        Hello, <?php echo $_SESSION['username']; ?>. You're the fckn king. <a href="<?php echo Config::get('paths', 'root') ?>admin">Go and rule</a>!
+                        Hello, <?php echo $_SESSION['firstname']; ?>. You're the fckn king. <a href="<?php echo Config::get('paths', 'root') ?>admin">Go and rule</a>!
                     <?php else : ?>
-                        Hello, <?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?>. You're currently in your profile. Here you can track some personal information and do cool stuff!
+                        Hello, <?php echo $_SESSION['firstname']; ?>. You're currently in your profile. Here you can track your activity and tweak your personal information!
                     <?php endif; ?>
                 </h4>
                 

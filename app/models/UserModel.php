@@ -56,9 +56,12 @@ class UserModel extends MainModel
     }
     public function isAdmin() {
         if (isset($_SESSION['username'])) {
-            if (!$_SESSION['role'] == 'admin') {
+            if ($_SESSION['role'] != 'admin') {
                 Redirect::to('homepage');
             }
+        } else {
+            Redirect::to('homepage');
         }
+        
     }
 }
