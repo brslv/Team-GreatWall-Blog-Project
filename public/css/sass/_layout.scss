@@ -13,11 +13,17 @@
     background-size: cover;
 
     input[type="text"] {
+        @include fade;
         border: 0;
         outline: 0;
         text-align: center;
         width: 300px;
         background: rgba(255,255,255,.21);
+
+        &:hover {
+            width: 400px;
+            background: rgba(255,255,255,.31);
+        }
     }
 }
 

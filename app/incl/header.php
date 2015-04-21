@@ -31,7 +31,7 @@
                     </h1>
                     
                     <p>
-                        Published by <a href=""> <?php echo $data[0]['author_username']; ?> </a> 
+                        Published by <a href="" class="u-bold"> <?php echo $data[0]['author_username']; ?>.</a> 
                     </p>
                 </div>
             <?php endif;?>
