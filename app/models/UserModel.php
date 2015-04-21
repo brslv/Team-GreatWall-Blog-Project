@@ -67,7 +67,7 @@ class UserModel extends MainModel
             }
         }
 
-        return false;
+        return true;
     }
 
     private  function  getHash($username){
