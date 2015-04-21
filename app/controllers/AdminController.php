@@ -26,9 +26,9 @@ class Admin extends Main {
             $result = $model->addPost();
 
             if ($result) {
-                $text = ['Post added successfully :)'];
+                $text = 'Post added successfully :)';
             } else {
-                $text = ['Don\'t cheat, bro! Fill in all the blanks.'];
+                $text = 'Don\'t cheat, bro! Fill in all the blanks.';
             }
         }
 

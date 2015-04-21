@@ -2,7 +2,7 @@
           
             <?php if($data['msg'] != null) : ?>
                 <div class="msg">
-                    <?php echo $data[0]; ?>
+                    <?php echo $data['msg']; ?>
                 </div>
             <?php endif; ?>
             
