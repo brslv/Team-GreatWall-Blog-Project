@@ -35,13 +35,21 @@ class PostModel extends MainModel
 
     public function getPosts()
     {
-        $allVisiblePosts = $this->db->query('SELECT * FROM posts WHERE status=1 ORDER BY id DESC');
+        $query = 'SELECT posts.id, posts.title, posts.content, posts.excerpt, posts.publish_date, posts.status, users.username as author_username, users.firstname as author_firstname, users.lastname as author_lastname, categories.title as category';
+        $query .= ' FROM posts';
+        $query .= ' INNER JOIN users ON posts.author_id = users.id';
+        $query .= ' INNER JOIN categories ON posts.category_id = categories.id';
+        $query .= ' WHERE posts.status = 1';
+        $query .= ' ORDER BY posts.id DESC';
+
+        $allVisiblePosts = $this->db->query($query);
         $fetchedPosts = $allVisiblePosts->fetchAll(PDO::FETCH_ASSOC);
         return $fetchedPosts;
     }
 
     public function getPostByid($id)
     {
+        // TODO: add AND status = 1!!!!!!!!!!!
         $query = $this->db->prepare('SELECT * FROM posts WHERE id=:id');
         $query->execute([':id' => $id]);
         $result = $query->fetchAll(PDO::FETCH_ASSOC);

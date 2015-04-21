@@ -24,8 +24,15 @@
             <?php if(!empty($data)):?>
                 <div class="welcome">
                     <h5 class="u-bold">Latest post: </h5></span>
-                    <h1 class="u-bold"><a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $data[0]['id']; ?>"><?php echo $data[0]['title'];?></a></h1>
-                    <p>Published by <a href="">admin</a>.</p>
+                    <h1 class="u-bold">
+                        <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $data[0]['id']; ?>">
+                            <?php echo $data[0]['title'];?>
+                        </a>
+                    </h1>
+                    
+                    <p>
+                        Published by <a href=""> <?php echo $data[0]['author_username']; ?> </a> 
+                    </p>
                 </div>
             <?php endif;?>
 

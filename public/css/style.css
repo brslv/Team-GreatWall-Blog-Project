@@ -602,7 +602,7 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #FF674C; }
+  color: #de4f4f; }
 
 a:hover {
   color: #bf1f24; }
@@ -666,8 +666,8 @@ input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   color: #FFF;
-  background-color: #FF674C;
-  border-color: #FF674C; }
+  background-color: #de4f4f;
+  border-color: #de4f4f; }
 
 /* Forms
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -880,12 +880,12 @@ a {
 
 ::selection {
   color: #f9f9f9;
-  background: #FF674C;
+  background: #de4f4f;
   /* WebKit/Blink Browsers */ }
 
 ::-moz-selection {
   color: #f9f9f9;
-  background: #FF674C;
+  background: #de4f4f;
   /* Gecko Browsers */ }
 
 /**
@@ -976,7 +976,7 @@ a {
       -o-transition: all .3s;
       transition: all .3s;
       display: inline-block;
-      background: #FF674C;
+      background: #de4f4f;
       padding: 8px 15px; }
       .pagination ul li:hover {
         background: #bf1f24; }
@@ -1033,7 +1033,7 @@ a {
   .btn:hover {
     margin-left: 10px;
     color: #f9f9f9;
-    background: #FF674C; }
+    background: #de4f4f; }
 
 .full-input {
   width: 100%; }
@@ -1044,7 +1044,7 @@ a {
   height: 400px; }
 
 .msg {
-  background: #FF674C;
+  background: #de4f4f;
   color: #f9f9f9;
   padding: 16.66667px;
   margin: 16.66667px 0;
