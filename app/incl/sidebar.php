@@ -4,7 +4,7 @@
                 <ul class="non-bullet">
                     <?php foreach($data as $post) : ?>
                         <li>
-                            <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $d['id']; ?>">
+                            <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $post['id']; ?>">
                                 <?php echo $post['title']; ?>
                             </a>
                         </li>
