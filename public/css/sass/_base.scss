@@ -26,3 +26,19 @@ a {
 	color: $c-light;
   	background: $c-accent; /* Gecko Browsers */
 }
+
+ul.non-bullet {
+    list-style: none;
+
+    li {
+        @include fade;
+
+        &:hover {
+            padding-left: 5px;
+        }
+    }
+}
+
+label {
+	font-weight: 300;
+}

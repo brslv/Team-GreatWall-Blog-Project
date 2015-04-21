@@ -888,6 +888,19 @@ a {
   background: #de4f4f;
   /* Gecko Browsers */ }
 
+ul.non-bullet {
+  list-style: none; }
+  ul.non-bullet li {
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s; }
+    ul.non-bullet li:hover {
+      padding-left: 5px; }
+
+label {
+  font-weight: 300; }
+
 /**
  * layout.scss
  *
@@ -992,16 +1005,6 @@ a {
 .register-container {
   text-align: center;
   margin: 0 auto; }
-
-.sidebar ul {
-  list-style: none; }
-  .sidebar ul li {
-    -webkit-transition: all .3s;
-    -moz-transition: all .3s;
-    -o-transition: all .3s;
-    transition: all .3s; }
-    .sidebar ul li:hover {
-      padding-left: 5px; }
 
 .footer {
   color: #bcbcbc;
