@@ -14,7 +14,7 @@
                 </div>
 
                 <div class="read-more">
-                    <a href="" class="btn">Read more &rarr;</a>
+                    <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $d['id']; ?>" class="btn">Read more &rarr;</a>
                 </div>
             </article>
 

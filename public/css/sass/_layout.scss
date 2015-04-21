@@ -11,6 +11,14 @@
     padding: $base-gutter 0;
     background-image: url("../img/hero-darker.jpg");
     background-size: cover;
+
+    input[type="text"] {
+        border: 0;
+        outline: 0;
+        text-align: center;
+        width: 300px;
+        background: rgba(255,255,255,.21);
+    }
 }
 
 .welcome {
@@ -30,8 +38,14 @@
 }
 
 .post {
+
+    p:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
     margin-bottom: $base-gutter;
-    padding-bottom: $base-gutter / 2;
+    padding-bottom: $base-gutter;
     border-bottom: 1px solid $c-mid;
     
     &:last-child {
@@ -46,7 +60,27 @@
 }
 
 .post-content {
-    padding: $base-gutter / 2 0;
+    padding-top: $base-gutter / 2 0;
+}
+
+.read-more {
+    padding-top: $base-gutter / 2;
+}
+
+.comments-section {
+    border: 5px solid $c-dark;
+    padding: $base-gutter;
+    margin-bottom: $base-gutter;
+
+    .comment-content {
+        padding-left: $base-gutter / 2;
+        padding-bottom: $base-gutter / 2;
+    }
+
+}
+
+.add-comment-section {
+    margin-top: $base-gutter / 2;
 }
 
 .profile-name {
@@ -79,10 +113,11 @@
         list-style: none;
             
         li {
+            @include fade;
             display: inline-block;
             background: $c-accent;
             padding: 8px 15px;
-            
+
             &:hover {
                 background: $c-accent-hover;
             }
@@ -90,15 +125,12 @@
     }
 }
 
-.read-more { 
-    padding-top: $base-gutter / 3;
-}
-
 .login-container,
 .register-container{
     text-align: center;
     margin: 0 auto;
 }
+
 
 // Bottom
 .footer {

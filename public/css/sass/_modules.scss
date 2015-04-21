@@ -19,16 +19,22 @@
     }
 }
 
+a {
+    @include fade;
+}
+
 // Buttons
 .btn {
+    @include fade;
     display: inline-block;
-    padding: 15px;
-    background: $c-accent;
-    color: $c-light;
+    padding: 7px;
+    background: $c-mid - 10;
+    color: $c-dark;
     
     &:hover {
+        margin-left: 10px;
         color: $c-light;
-        background: $c-accent-hover;
+        background: $c-accent;
     }
 }
 

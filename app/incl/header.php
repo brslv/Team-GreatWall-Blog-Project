@@ -28,5 +28,11 @@
                     <p>Published by <a href="">admin</a>.</p>
                 </div>
             <?php endif;?>
+
+            <div class="search-bar">
+                <form action="" method="POST">
+                    <input type="text" name="searchBar" placeholder="Searching something? Type & hit enter..." />
+                </form>
+            </div>
         </div>
     </header>

@@ -17,3 +17,12 @@ body {
 a {
     text-decoration: none;
 }
+
+::selection {
+	color: $c-light;	
+  	background: $c-accent; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+	color: $c-light;
+  	background: $c-accent; /* Gecko Browsers */
+}
