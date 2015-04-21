@@ -13,13 +13,15 @@ class UserModel extends MainModel
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            
-            $query = $this->db->prepare('SELECT * fROM users WHERE username=:username AND password=:password');
-            $query->execute([':username'=>$username, ':password'=>$password]);
-            $user = $query->fetchAll(PDO::FETCH_OBJ);
-            //var_dump($user);
-           // die();
-            return $user;
+            $hashedPass = $this->getHash($username);
+            if(password_verify($password,$hashedPass)){
+                $query = $this->db->prepare('SELECT * fROM users WHERE username=:username AND password=:password');
+                $query->execute([':username'=>$username, ':password'=>$hashedPass]);
+                $user = $query->fetchAll(PDO::FETCH_OBJ);
+                //var_dump($user);
+               // die();
+                return $user;
+            }
         }
         
     }
@@ -37,7 +39,7 @@ class UserModel extends MainModel
             $username = $_POST['username'];
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
-            $password = $_POST['password'];
+            $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
             $email = $_POST['email'];
             $role = 'user';
             $query = $this->db->prepare('INSERT INTO users(username, firstname, lastname, password, email, role) VALUES(:username, :firstname, :lastname, :password, :email, :role)');
@@ -70,4 +72,14 @@ class UserModel extends MainModel
         }
         
     }
+    private  function  getHash($username){
+            $query =  $this->db->query("SELECT password FROM users WHERE username='{$username}'");
+            $result = $query->fetchAll(PDO::FETCH_OBJ);
+            if(empty($result)){
+                return false;
+            }else {
+                return $result[0]->password;
+            }
+    }
+
 }
