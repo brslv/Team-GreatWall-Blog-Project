@@ -56,22 +56,20 @@ class UserModel extends MainModel
         }
 
     }
-
+    
     /**
-     * Checks if the logged user is admin.
-     * If so - the app logic continues.
-     * If not - performs a simple homepage redirect. 
+     * Checks if a logged in user is admin.
      */
     public function isAdmin() {
         if (isset($_SESSION['username'])) {
             if ($_SESSION['role'] != 'admin') {
-                Redirect::to('homepage');
+                return false;
             }
-        } else {
-            Redirect::to('homepage');
         }
-        
+
+        return false;
     }
+
     private  function  getHash($username){
             $query =  $this->db->query("SELECT password FROM users WHERE username='{$username}'");
             $result = $query->fetchAll(PDO::FETCH_OBJ);

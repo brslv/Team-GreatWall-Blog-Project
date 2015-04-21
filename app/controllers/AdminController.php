@@ -8,15 +8,19 @@ class Admin extends Main {
 
         // If the logged user is not admin -> redirect him to the homepage.
         // Otherwise - continue.
-        $model->isAdmin();
-
-        Redirect::to('admin/addPost');
+        if($model->isAdmin()) {
+            Redirect::to('admin/addPost');    
+        } else {
+            Redirect::to('homepage');
+        }
+        
     }
 
     /**
      * Loads the addpostView
      */
     public function addPost() {
+        if(!$this->getModel('UserModel')->isAdmin()) Redirect::to('homepage');
         $text = null;
         $viewData = null;
 
@@ -44,6 +48,7 @@ class Admin extends Main {
      * For manageing categories 
      */
     public function manageCategories() {
+        if(!$this->getModel('UserModel')->isAdmin()) Redirect::to('homepage');
 
         $data = [
             'msg' => null,
@@ -54,10 +59,11 @@ class Admin extends Main {
     }
 
     /**
-     * For manageing categories 
+     * For manageing pages
      */
     public function managePages() {
-
+        if(!$this->getModel('UserModel')->isAdmin()) Redirect::to('homepage');
+        
         $data = [
             'msg' => null,
             'action' => 'managePages'
@@ -70,6 +76,7 @@ class Admin extends Main {
      * For manageing posts
      */
     public function managePosts() {
+        if(!$this->getModel('UserModel')->isAdmin()) Redirect::to('homepage');
 
         $data = [
             'msg' => null,

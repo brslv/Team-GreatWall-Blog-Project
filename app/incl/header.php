@@ -34,12 +34,12 @@
                         Published by <a href="" class="u-bold"> <?php echo $data[0]['author_username']; ?>.</a> 
                     </p>
                 </div>
-            <?php endif;?>
 
-            <div class="search-bar">
-                <form action="" method="POST">
-                    <input type="text" name="searchBar" placeholder="Searching something? Type & hit enter..." />
-                </form>
-            </div>
+                <div class="search-bar">
+                    <form action="" method="POST">
+                        <input type="text" name="searchBar" placeholder="Searching something? Type & hit enter..." />
+                    </form>
+                </div>
+            <?php endif;?>
         </div>
     </header>
