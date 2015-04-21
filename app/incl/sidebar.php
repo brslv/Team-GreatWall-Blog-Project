@@ -2,6 +2,7 @@
             <div class="sidebar-item">
                 <h5>Latest posts</h5>
                 <ul class="non-bullet">
+                    <?php // TODO: List only the latest 3-5 posts, not all!!! ?>
                     <?php foreach($data as $post) : ?>
                         <li>
                             <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $post['id']; ?>">

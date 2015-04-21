@@ -32,7 +32,7 @@ class UserModel extends MainModel
     public function register()
     {
         //TODO: Each user can add comments
-
+        //TODO: hash the password
         if (!empty($_POST['username']) && !empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['password']) && !empty($_POST['email'])) {
             $username = $_POST['username'];
             $firstname = $_POST['firstname'];
@@ -54,6 +54,12 @@ class UserModel extends MainModel
         }
 
     }
+
+    /**
+     * Checks if the logged user is admin.
+     * If so - the app logic continues.
+     * If not - performs a simple homepage redirect. 
+     */
     public function isAdmin() {
         if (isset($_SESSION['username'])) {
             if ($_SESSION['role'] != 'admin') {

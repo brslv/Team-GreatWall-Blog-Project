@@ -26,7 +26,7 @@
                     
                     <div class="four columns">
                         <h5>Options: </h5>
-                        <ul>
+                        <ul class="non-bullet">
                             <li><a href="">Change username</a></li>
                             <li><a href="">Change password</a></li>
                         </ul>
