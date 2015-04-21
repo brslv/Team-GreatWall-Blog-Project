@@ -26,4 +26,5 @@
 
     <?php require_once '../app/incl/sidebar.php'; ?>
 </main>
-    
+
+<?php require_once '../app/incl/footer.php'; ?>
