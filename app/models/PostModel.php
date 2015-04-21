@@ -15,7 +15,13 @@ class PostModel extends MainModel
     {
 
         if (!empty($_POST['postTitle']) && !empty($_POST['postContent'])) {
-
+            if(isset($_POST['postTags'])){
+                $tags =explode(", ",$_POST['postTags']);
+                foreach ($tags as $tag){
+                    $query = $this->db->prepare("INSERT INTO tags (title) VALUES (:title)");
+                    $query->execute([':title'=>$tag]);
+                }
+            }
             $insertInfo = $this->db->prepare('INSERT INTO posts(title, content, excerpt,author_id, publish_date, status) VALUE (:postTitle, :postContent, :postExcerpt,:postAuthorId, :postDate, :status)');
 
             return $insertInfo->execute([
@@ -26,6 +32,7 @@ class PostModel extends MainModel
                 ':postDate' => date('Y-m-d'),
                 ':status' => (int)$_POST['postVisibility']
             ]);
+
 
         }
 
