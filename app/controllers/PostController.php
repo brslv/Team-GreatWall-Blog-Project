@@ -17,6 +17,7 @@ class Post extends Main {
         else {
             $model = $this->getModel('PostModel');
             $post = $model->getPostById($id[0]);
+            if(!$post) Redirect::to('homepage');
             $this->getView('singleView', $post);
         }
     }

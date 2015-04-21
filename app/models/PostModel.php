@@ -42,14 +42,10 @@ class PostModel extends MainModel
 
     public function getPostByid($id)
     {
-
-
         $query = $this->db->prepare('SELECT * FROM posts WHERE id=:id');
         $query->execute([':id' => $id]);
-        return $query->fetchAll(PDO::FETCH_ASSOC);
-
-
-
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        return $result ? $result : false;
     }
 
 }

@@ -57,6 +57,7 @@ class Config
             ],
             
             "paths" => [
+                // TODO: ON DEPLOYMENT: "root => '/'" !!!!!!!!!!!
                 "root" => $publicFolder,
                 "controllers" => "../app/controllers/",
                 "models" => "../app/models/",

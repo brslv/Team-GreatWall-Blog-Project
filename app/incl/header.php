@@ -4,7 +4,7 @@
     <title>This is the blog.</title>
     
     <!-- HARDCODE THE STYLE URL: -->
-    <link rel="stylesheet" href="http://localhost/Teamwork Blog/Team-GreatWall-Blog-Project/public/css/style.css" type="text/css"  />
+    <link rel="stylesheet" href="http://localhost<?php echo Config::get('paths', 'root'); ?>/css/style.css" type="text/css"  />
     <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
     <script>
         tinymce.init({
@@ -24,7 +24,7 @@
             <?php if(!empty($data)):?>
                 <div class="welcome">
                     <h5 class="u-bold">Latest post: </h5></span>
-                    <h1 class="u-bold"><a href=""><?php echo $data[0]['title'];?></a></h1>
+                    <h1 class="u-bold"><a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $data[0]['id']; ?>"><?php echo $data[0]['title'];?></a></h1>
                     <p>Published by <a href="">admin</a>.</p>
                 </div>
             <?php endif;?>
