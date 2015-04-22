@@ -19,7 +19,7 @@ class Search extends Main {
 			Redirect::to('homepage');
 		}
 
-		$tagName = trim(htmlspecialchars($tagName[0]));
+		$tagName = trim(urldecode($tagName[0]));
 
 		$searchModel = $this->getModel('SearchModel');
 		$posts = $searchModel->searchByTag($tagName);
@@ -33,13 +33,18 @@ class Search extends Main {
 		$this->getView('searchView', $data);
 	}
 
+	///////////////////////////////////////////////////
+	// TODO: Implement searching on post-date click //
+	///////////////////////////////////////////////////
+	public function ondate() {}
+
 	/**
 	 * Performs a search action, searching in posts titles, contents and tags.
 	 * 
 	 * @param  string $term The searched term
 	 */
 	public function master($term) {
-		$term = trim(htmlspecialchars($term[0]));
+		$term = trim(urldecode($term[0]));
 
 		$results = [];
 		
