@@ -6,7 +6,7 @@
                 <div><h2> Results on: <span class="u-bold"><?php echo $data['searchTerm']; ?></span></h2></div>
 
                 <div class="page-content">
-                    <?php if($data['results']) : ?>
+                    <?php if(!empty($data['results'][0])) : ?>
                         <?php foreach($data['results'] as $post) : ?>
                             <h4 class="u-bold">
                                 <a href="<?php echo Config::get('paths', 'root'); ?>post/show/<?php echo $post->id; ?>">
