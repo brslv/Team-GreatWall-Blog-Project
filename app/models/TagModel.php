@@ -104,4 +104,26 @@ class TagModel extends MainModel {
 		return $result;
 	}
 
+	/**
+	 * Returns a list of posts, containing the tag specified.
+	 * 
+	 * @param  string $tagName
+	 * @return array
+	 */
+	public function getPostsWithTag($tagName)
+	{
+		$query = 'SELECT posts.id, posts.title FROM tags ';
+		$query.= 'INNER JOIN taxonomy ON tags.id = taxonomy.tag_id ';
+		$query.= 'INNER JOIN posts ON taxonomy.post_id = posts.id ';
+		$query.= 'WHERE tags.title = :tag';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute([
+			':tag' => $tagName
+		]);
+		$posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+		return $posts;
+	}
+
 }

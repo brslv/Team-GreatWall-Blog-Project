@@ -16,26 +16,22 @@ class Post extends Main {
 	 * @param  int $id The id of the post
 	 */
 	public function show($id = null) {
-		if ($id == null) {
+		$tag = $this->getModel('TagModel');
+		$post = $this->getModel('PostModel');
+
+		$post = $post->getPostById($id[0]);
+		if (!$post) {
 			Redirect::to('homepage');
-		} else {
-			$tag = $this->getModel('TagModel');
-			$post = $this->getModel('PostModel');
-
-			$post = $post->getPostById($id[0]);
-			if (!$post) {
-				Redirect::to('homepage');
-			}
-
-			$tags = $tag->get($post[0]['id']);
-
-			$data = [
-				'post' => $post,
-				'tags' => $tags
-			];
-
-			$this->getView('singleView', $data);
 		}
+
+		$tags = $tag->get($post[0]['id']);
+
+		$data = [
+			'post' => $post,
+			'tags' => $tags
+		];
+
+		$this->getView('singleView', $data);
 	}
 
 }

@@ -19,11 +19,6 @@
 
                 <div class="post-tags">
                     <span class="u-bold">Tags:</span> 
-                    <?php 
-                        /////////////////////////////////////////////////////////////////
-                        //TODO: Implement search controller with 'tag' and 'all' methods!  //
-                        /////////////////////////////////////////////////////////////////
-                    ?>
                     <?php  
                         $tagCount = count($data['tags']);
                         $counter = 1;
@@ -31,7 +26,7 @@
                     <em>
                         <?php if($tagCount < 1) echo 'no tags for this cool post, which is sad, by the way...'; ?>
                         <?php foreach($data['tags'] as $tag) : ?>
-                            <a href="search/tag/<?php echo $tag->tag_id; ?>"><?php echo $tag->tag_title; ?></a>
+                            <a href="<?php echo Config::get('paths', 'root'); ?>search/tag/<?php echo $tag->tag_title; ?>"><?php echo $tag->tag_title; ?></a>
                             <?php if($counter < $tagCount) echo ', '; ?>
                         <?php $counter++; endforeach; ?>
                     </em>
