@@ -19,13 +19,22 @@ class Post extends Main {
 		if ($id == null) {
 			Redirect::to('homepage');
 		} else {
+			$tag = $this->getModel('TagModel');
 			$post = $this->getModel('PostModel');
+
 			$post = $post->getPostById($id[0]);
 			if (!$post) {
 				Redirect::to('homepage');
 			}
 
-			$this->getView('singleView', $post);
+			$tags = $tag->get($post[0]['id']);
+
+			$data = [
+				'post' => $post,
+				'tags' => $tags
+			];
+
+			$this->getView('singleView', $data);
 		}
 	}
 

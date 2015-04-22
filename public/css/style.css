@@ -950,10 +950,16 @@ label {
     border-bottom: none; }
 
 .post-meta {
-  padding-bottom: 16.66667px; }
+  padding-bottom: 50px; }
 
 .post-content {
   padding-top: 25px 0; }
+
+.post-tags {
+  margin-top: 50px;
+  padding: 16.66667px;
+  background: #eee;
+  border-left: 5px solid #de4f4f; }
 
 .read-more {
   padding-top: 25px; }
@@ -1092,6 +1098,9 @@ a {
 
 .u-text-center {
   text-align: center; }
+
+.u-large-text {
+  font-size: 4em; }
 
 .u-upper {
   text-transform: uppercase; }

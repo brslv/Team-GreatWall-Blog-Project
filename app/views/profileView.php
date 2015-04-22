@@ -2,7 +2,7 @@
     <main class="main container row">
         <section class="twelve columns">
             <article>
-                <div><h2 class="profile-name u-text-center"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></h2></div>
+                <div><h2 class="profile-name u-large-text u-text-center"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['lastname']; ?></h2></div>
                 <h4 class="profile-msg u-text-center">
                     <?php if($_SESSION['role'] == 'admin') : ?>
                         Hello, <?php echo $_SESSION['firstname']; ?>. I don't know if you're aware, but you appear to be the admin of this blog. <a href="<?php echo Config::get('paths', 'root') ?>admin">So, go and rule</a>!

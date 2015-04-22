@@ -27,7 +27,7 @@ class PostModel extends MainModel {
 			$result = $query->execute([
 				':postTitle' => filter_input(INPUT_POST, 'postTitle'),
 				':postContent' => filter_input(INPUT_POST, 'postContent'),
-				':postExcerpt' => trim(substr(filter_input(INPUT_POST, 'postContent'), 0, 500)) . "...",
+				':postExcerpt' => trim(substr(rtrim(filter_input(INPUT_POST, 'postContent'), '</p>'), 0, 500)) . "...",
 				':postAuthorId' => $_SESSION['id'],
 				':postDate' => date('Y-m-d'),
 				':status' => (int) $_POST['postVisibility'],
@@ -69,13 +69,13 @@ class PostModel extends MainModel {
 	 * @return array
 	 */
 	public function getPostByid($id) {
-		// TODO: Limit by 1 and return $result[0] ?
 		$query = 'SELECT posts.id, posts.title, posts.content, posts.excerpt, posts.publish_date, posts.status, users.username as author_username, users.firstname as author_firstname, users.lastname as author_lastname, categories.title as category';
 		$query .= ' FROM posts';
 		$query .= ' INNER JOIN users ON posts.author_id = users.id';
 		$query .= ' INNER JOIN categories ON posts.category_id = categories.id';
 		$query .= ' WHERE posts.status = 1 AND posts.id = :id';
 		$query .= ' ORDER BY posts.id DESC';
+		$query .= ' LIMIT 1';
 
 		$query = $this->db->prepare($query);
 		$query->execute([

@@ -83,4 +83,25 @@ class TagModel extends MainModel {
 		return false;
 	}
 
+	/**
+	 * Gets the tags for a specific post
+	 * 
+	 * @param  int $postId
+	 * @return array
+	 */
+	public function get($postId) {
+		$query = 'SELECT tags.id as tag_id, tags.title as tag_title, posts.id as post_id, posts.title as post_title FROM tags ';
+		$query.= 'INNER JOIN taxonomy ON tags.id = taxonomy.tag_id ';
+		$query.= 'INNER JOIN posts ON posts.id = taxonomy.post_id ';
+		$query.= 'WHERE posts.id = :post_id';
+
+		$stmt = $this->db->prepare($query);
+		$stmt->execute([
+			':post_id' => $postId,
+		]);
+		$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+		return $result;
+	}
+
 }

@@ -3,18 +3,38 @@
     <main class="main container row">
         <section class="twelve columns">
             <article class="post">
-                <h3 class="u-bold">
-                    <?php echo $data[0]['title'] ?>
-                </h3>
+                <h1 class="u-bold u-large-text">
+                    <?php echo $data['post'][0]['title'] ?>
+                </h1>
                 
                 <div class="post-meta u-upper u-bold">
-                    Post added by <a href=""><?php echo $data[0]['author_username']; ?></a> 
-                    in <a href=""><?php echo $data[0]['category']; ?></a> 
-                    on <a href=""><?php echo $data[0]['publish_date']; ?></a>
+                    Post added by <a href=""><?php echo $data['post'][0]['author_username']; ?></a> 
+                    in <a href=""><?php echo $data['post'][0]['category']; ?></a> 
+                    on <a href=""><?php echo $data['post'][0]['publish_date']; ?></a>
                 </div>
                 
                 <div class="post-content">
-                    <?php echo $data[0]['content'] ?>
+                    <?php echo $data['post'][0]['content'] ?>
+                </div>
+
+                <div class="post-tags">
+                    <span class="u-bold">Tags:</span> 
+                    <?php 
+                        /////////////////////////////////////////////////////////////////
+                        //TODO: Implement search controller with 'tag' and 'all' methods!  //
+                        /////////////////////////////////////////////////////////////////
+                    ?>
+                    <?php  
+                        $tagCount = count($data['tags']);
+                        $counter = 1;
+                    ?>
+                    <em>
+                        <?php if($tagCount < 1) echo 'no tags for this cool post, which is sad, by the way...'; ?>
+                        <?php foreach($data['tags'] as $tag) : ?>
+                            <a href="search/tag/<?php echo $tag->tag_id; ?>"><?php echo $tag->tag_title; ?></a>
+                            <?php if($counter < $tagCount) echo ', '; ?>
+                        <?php $counter++; endforeach; ?>
+                    </em>
                 </div>
             </article>
         </section>

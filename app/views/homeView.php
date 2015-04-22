@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="post-content">
-                    <?php echo $d['excerpt']?>
+                    <?php echo $d['excerpt']; ?>
                 </div>
 
                 <div class="read-more">

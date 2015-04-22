@@ -62,11 +62,18 @@
 }
 
 .post-meta {
-    padding-bottom: $base-gutter / 3;
+    padding-bottom: $base-gutter;
 }
 
 .post-content {
     padding-top: $base-gutter / 2 0;
+}
+
+.post-tags {
+    margin-top: $base-gutter;
+    padding: $base-gutter / 3;
+    background: $c-mid;
+    border-left: 5px solid $c-accent;
 }
 
 .read-more {
