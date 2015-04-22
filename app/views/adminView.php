@@ -26,9 +26,9 @@
             
             <ul class="non-bullet">
                 <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/addPosts">Add posts</a></li>
-                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/managePosts">Manage posts</a></li>
-                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/managePages">Manage pages</a></li>
-                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/manageCategories">Manage categories</a></li>
+                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/manage/posts">Manage posts</a></li>
+                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/manage/pages">Manage pages</a></li>
+                <li><a href="<?php echo Config::get('paths', 'root'); ?>admin/manage/categories">Manage categories</a></li>
             </ul>
         </section>
     </main>
