@@ -1,77 +1,92 @@
 <?php
 
+/**
+ * UserController
+ */
 class User extends Main {
 
-    public function index() {
-        Redirect::to('user/me');
-    }
+	/**
+	 * The default method
+	 *
+	 */
+	public function index() {
+		Redirect::to('user/me');
+	}
 
-    /**
-     * Loggs in a user
-     * 
-     */
-    public function login() {
-        $message = null;
-        if (isset($_POST['loginSubmit'])) {
-            $model = $this->getModel('UserModel');
-            $user = $model->login();
-            if (!empty($user)) {
-                $user = $user[0];
-                $_SESSION['id'] = $user->id;
-                $_SESSION['username'] = $user->username;
-                $_SESSION['firstname'] = $user->firstname;
-                $_SESSION['lastname'] = $user->lastname;
-                $_SESSION['email'] = $user->email;
-                $_SESSION['role'] = $user->role;
-                Redirect::to('user/me');
-            } else {
-                $message = ['Login fail'];
-            }
-        }
-        $this->getView('loginView', $message);
-    }
+	/**
+	 * Loggs in the user
+	 *
+	 */
+	public function login() {
+		$message = null;
 
-    /**
-     * Registers a new user
-     * 
-     */
-    public function register() {
-        $message = null;
-        if (isset($_POST['registerSubmit'])) {
-            $model = $this->getModel('UserModel');
-            $user = $model->register();
-            if ($user) {
-                $message = ['Successull registry'];
-            } else {
-                $message = ['Register fail'];
-            }
-        }
-        $this->getView('registerView', $message);
-    }
+		if (isset($_POST['loginSubmit'])) {
+			$userModel = $this->getModel('UserModel');
+			$user = $userModel->login();
 
-    /**
-     * Displays the current user's profile
-     */
-    public function me() {
-        if(!isset($_SESSION['username'])) {
-            Redirect::to('homepage');
-        }
-        
-        $this->getView('profileView');
-    }
-    
-    /**
-     * Destries the session and redirects to the homepage
-     */
-    public function logout() {
-        session_destroy();
-        session_unset('username');
-        session_unset('id');
-        session_unset('firstname');
-        session_unset('lastname');
-        session_unset('email');
-        session_unset('role');
-        Redirect::to('homepage');
-    }
-    
+			if ($user) {
+				$_SESSION['id'] = $user->id;
+				$_SESSION['username'] = $user->username;
+				$_SESSION['firstname'] = $user->firstname;
+				$_SESSION['lastname'] = $user->lastname;
+				$_SESSION['email'] = $user->email;
+				$_SESSION['role'] = $user->role;
+
+				Redirect::to('user/me');
+			} else {
+				$message = ['Login failed. Please, try again.'];
+			}
+		}
+
+		$this->getView('loginView', $message);
+	}
+
+	/**
+	 * Registers a new user
+	 *
+	 */
+	public function register() {
+		$message = null;
+
+		if (isset($_POST['registerSubmit'])) {
+			$userModel = $this->getModel('UserModel');
+			$user = $userModel->register();
+			if ($user) {
+				$message = ['Nice! You\'re awesome. Now log in the system.'];
+			} else {
+				$message = ['Something went wrong. Please, try again.'];
+			}
+		}
+
+		$this->getView('registerView', $message);
+	}
+
+	/**
+	 * Gets the profileView view, which displays information about the user
+	 *
+	 *
+	 */
+	public function me() {
+		if (!isset($_SESSION['username'])) {
+			Redirect::to('homepage');
+		}
+
+		$this->getView('profileView');
+	}
+
+	/**
+	 * Performs a logout action and destroys the current session
+	 *
+	 */
+	public function logout() {
+		session_destroy();
+		session_unset('username');
+		session_unset('id');
+		session_unset('firstname');
+		session_unset('lastname');
+		session_unset('email');
+		session_unset('role');
+		Redirect::to('homepage');
+	}
+
 }

@@ -1,19 +1,31 @@
 <?php
 
-class Page extends Main{
+/**
+ * PageController
+ */
+class Page extends Main {
 
-    public function index() {
-        Redirect::to('homepage');
-    }
+	/**
+	 * The default method
+	 *
+	 */
+	public function index() {
+		Redirect::to('homepage');
+	}
 
-    public function show($id) {
-        if (empty($id)){
-            Redirect::to('homepage');
-        } else {
-            $model = $this->getModel('PageModel');
-            $page = $model->goToPage($id[0]);
-            $this->getView('pageView', $page);
-        }
+	/**
+	 * Shows a specified page by id
+	 *
+	 * @param  int $id The id of the page
+	 */
+	public function show($id) {
+		if (empty($id)) {
+			Redirect::to('homepage');
+		} else {
+			$page = $this->getModel('PageModel');
+			$page = $page->open($id[0]);
+			$this->getView('pageView', $page);
+		}
 
-    }
+	}
 }
