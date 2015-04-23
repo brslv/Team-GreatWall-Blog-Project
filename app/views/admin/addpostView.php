@@ -14,19 +14,16 @@
                 <label for="postTags">Insert tags: </label>
                 <input class="full-input" type="text" name="postTags" placeholder="Separate those bitches by comma: " />
 
-                <label for="postCategory">Select category: </label>
                 <select name="postCategory">
                     <option value="PHP">PHP</option>
                     <option value="Java">Java</option>
                 </select>
-                <br />
 
-                <label for="postVisibility">Post visibility: </label>
                 <select name="postVisibility">
                     <option value="1">Public</option>
                     <option value="0">Private</option>
                 </select>
-                <br /><br />
+                <br />
                
                 <input type="submit" name="postSubmit" value="Submit post" />
             </form>

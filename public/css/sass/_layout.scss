@@ -144,6 +144,25 @@
     margin: 0 auto;
 }
 
+.list-item {
+    h5 {
+        margin-top: 4px;
+    }
+
+    .item-options {
+        margin-top: 10px;
+    }
+
+    padding: $base-gutter / 3 $base-gutter / 3 0 $base-gutter / 3;
+    border-top: 1px solid $c-dark;
+    border-left: 1px solid $c-dark;
+    border-right: 1px solid $c-dark;
+
+    &:last-child {
+        border-bottom: 1px solid $c-dark;
+    }
+}
+
 // Sidebar
 
 // Bottom

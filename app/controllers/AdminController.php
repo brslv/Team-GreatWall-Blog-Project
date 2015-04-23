@@ -63,31 +63,85 @@ class Admin extends Main {
 		if (!$this->getModel('UserModel')->isAdmin()) {
 			Redirect::to('homepage');
 		}
+		$msg = null;
+		$pageModel = $this->getModel('PageModel');
 
 		if (empty($thing)) {
 			$this->index();
-		} else if ($thing[0] == 'posts') {
+		} 
+
+		////////////
+		//Posts //
+		////////////
+		else if ($thing[0] == 'posts') {
 			$data = [
-				'msg' => null,
+				'msg' => $msg,
 				'action' => 'managePosts',
 			];
 
 			$this->getView('adminView', $data);
-		} else if ($thing[0] == 'pages') {
+		}
+
+		/////////////
+		// Pages //
+		/////////////
+		else if ($thing[0] == 'pages') {
+			$pages = $pageModel->getAll();
+			if(isset($_POST['pageSubmit'])) {
+				$msg = $pageModel->add();
+				$msg = $msg == 1 ? 'Successfully added new page.' : 'Something went wrong. Please, try again.';
+				Redirect::to('admin/manage/pages');
+			}
+
 			$data = [
-				'msg' => null,
+				'msg' => $msg,
 				'action' => 'managePages',
+				'pages' => $pages
 			];
 
 			$this->getView('adminView', $data);
-		} else if ($thing[0] == 'categories') {
+		}
+
+		/////////////////
+		// Categories //
+		/////////////////
+		else if ($thing[0] == 'categories') {
 			$data = [
-				'msg' => null,
+				'msg' => $msg,
 				'action' => 'manageCategories',
 			];
 
 			$this->getView('adminView', $data);
 		}
+	}
+
+	public function delete($input = null) {
+		if(count($input) < 2) Redirect::to('homepage'); 
+
+		$node = $input[0];
+		$pageId = (int) $input[1];
+
+		/////////////
+		// Pages //
+		/////////////
+		if($node == 'page') {
+			if(!isset($_SESSION['role'])) {
+				if($pageId == null || $_SESSION['role'] != 'admin') {
+					Redirect::to('homepage');
+				} 
+			} else {
+				$pageModel = $this->getModel('PageModel');
+				$pageModel->delete($pageId);
+				Redirect::to('admin/manage/pages');
+			}
+		}
+
+		///////////////////////////////////////////////////////////
+		//TODO: Add functionalities - delete post and category //
+		///////////////////////////////////////////////////////////
+
+		// if($node == 'post') {} 
+		// if($node == 'category') {}
 	}
 
 }
