@@ -16,6 +16,14 @@ class Post extends Main {
 	 * @param  int $id The id of the post
 	 */
 	public function show($id = null) {
+        $commentModel = $this->getModel('CommentModel');
+        if (isset($_POST['commentSubmit']) && !empty($_POST['commentContent'])) {
+            $comment = $_POST['commentContent'];
+            $author_id = $_SESSION['id'];
+            $post_id = $id[0];
+            $commentModel->addComment($comment, $post_id, $author_id);
+        }
+       $comments = $commentModel->listComments($id[0]);
 		$tag = $this->getModel('TagModel');
 		$post = $this->getModel('PostModel');
 
@@ -28,7 +36,8 @@ class Post extends Main {
 
 		$data = [
 			'post' => $post,
-			'tags' => $tags
+			'tags' => $tags,
+            'comments' => $comments
 		];
 
 		$this->getView('singleView', $data);
