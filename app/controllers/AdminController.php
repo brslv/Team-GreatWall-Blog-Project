@@ -32,7 +32,8 @@ class Admin extends Main {
 
 		$msg = null;
 		$viewData = null;
-
+        $categoriesModel = $this->getModel('CategoryModel');
+        $allCategories = $categoriesModel->getCategories();
 		if (isset($_POST['postSubmit'])) {
 			$post = $this->getModel('PostModel');
 
@@ -48,6 +49,7 @@ class Admin extends Main {
 		$data = [
 			'msg' => $msg,
 			'action' => 'addPost',
+            'categories' => $allCategories
 		];
 
 		$this->getView('adminView', $data);

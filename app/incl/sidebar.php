@@ -17,13 +17,19 @@
             
             <div class="sidebar-item">
                 <h5>Categories</h5>
-                
+
                 <ul class="non-bullet">
-                    <li><a href="">Some links</a></li>
-                    <li><a href="">Some links</a></li>
-                    <li><a href="">Some links</a></li>
-                    <li><a href="">Some links</a></li>
-                    <li><a href="">Some links</a></li>
+                    <?php $catCounter = 1; ?>
+                    <?php foreach($data['categories'] as $cat) : ?>
+                        <?php if($catCounter <= 7) : ?>
+
+                            <li>
+                                <a href="<?php Config::get('paths', 'root'); ?>search/category/?name=<?php echo rawurlencode(rawurlencode($cat->title)); ?>">
+                                    <?php echo $cat->title ?><?php $catCounter++;?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </ul>
             </div>
             

@@ -16,14 +16,16 @@ class Home extends Main {
 
 		$home = $this->getModel('PostModel');
 		$tagModel = $this->getModel('TagModel');
-		
+		$categoryModel = $this->getModel('CategoryModel');
+
 		$allVisiblePosts = $home->getPosts();
 		$mostPopularTags = $tagModel->mostPopularTags();
-
+        $allCategories = $categoryModel->getCategories();
 
 		$data = [
 			'posts' => $allVisiblePosts,
 			'tags' => $mostPopularTags,
+            'categories' => $allCategories
 		];
 
 		$this->getView('homeView', $data);

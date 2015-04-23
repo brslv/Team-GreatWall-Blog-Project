@@ -35,6 +35,28 @@ class Search extends Main {
 		$this->getView('searchView', $data);
 	}
 
+    public function category(){
+        if(isset($_GET['name']) && !empty(trim($_GET['name']))) {
+            $name = rawurldecode($_GET['name']);
+        } else {
+            Redirect::to('homepage');
+        }
+
+        $catName = trim(rawurldecode($name));
+        $catId = $this->getModel('CategoryModel')->getCategoryIdByName($catName);
+        $searchModel = $this->getModel('SearchModel');
+        $posts = $searchModel->searchByCategory(rawurldecode($catName));
+        $posts = !empty($posts) ? $posts : null;
+
+        $data = [
+            'searchTerm' => rawurldecode($catName),
+            'results' => $posts,
+        ];
+
+        $this->getView('searchView', $data);
+    }
+
+
 	///////////////////////////////////////////////////
 	// TODO: Implement searching on post-date click //
 	///////////////////////////////////////////////////

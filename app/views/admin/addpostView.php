@@ -15,8 +15,13 @@
                 <input class="full-input" type="text" name="postTags" placeholder="Separate those bitches by comma: " />
 
                 <select name="postCategory">
-                    <option value="PHP">PHP</option>
-                    <option value="Java">Java</option>
+                    <?php if(isset($data['categories'])):?>
+                        <?php foreach($data['categories'] as $d):?>
+
+                            <option value="<?php echo $d->id;?>"><?php echo $d->title?></option>
+
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </select>
 
                 <select name="postVisibility">

@@ -22,13 +22,14 @@ class PostModel extends MainModel {
 
 		if (!empty($_POST['postTitle']) && !empty($_POST['postContent'])) {
 
-			$query = $this->db->prepare('INSERT INTO posts(title, content, excerpt, author_id, publish_date, status) VALUE (:postTitle, :postContent, :postExcerpt,:postAuthorId, :postDate, :status)');
+			$query = $this->db->prepare('INSERT INTO posts(title, content, excerpt, author_id,category_id, publish_date, status) VALUE (:postTitle, :postContent, :postExcerpt,:postAuthorId,:postCategory, :postDate, :status)');
 
 			$result = $query->execute([
 				':postTitle' => filter_input(INPUT_POST, 'postTitle'),
 				':postContent' => filter_input(INPUT_POST, 'postContent'),
 				':postExcerpt' => trim(substr(rtrim(filter_input(INPUT_POST, 'postContent'), '</p>'), 0, 500)) . "...</p>",
 				':postAuthorId' => $_SESSION['id'],
+                ':postCategory' => $_POST['postCategory'],
 				':postDate' => date('Y-m-d'),
 				':status' => (int) $_POST['postVisibility'],
 			]);

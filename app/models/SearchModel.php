@@ -42,4 +42,26 @@ class SearchModel extends MainModel {
 
 		return $posts;
 	}
+
+    public function searchByCategory($catName)
+    {
+        $catName = trim(htmlspecialchars($catName));
+        $query = 'SELECT id FROM categories WHERE title=:catName';
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            ':catName' => $catName
+        ]);
+        $catId = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $catId = $catId[0]->id;
+        $query = 'SELECT id, title FROM posts ';
+        $query.= 'WHERE category_id = :catId AND status = 1';
+
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([
+            ':catId' => $catId
+        ]);
+        $posts = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        return $posts;
+    }
 }
