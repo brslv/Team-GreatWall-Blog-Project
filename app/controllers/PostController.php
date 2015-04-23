@@ -16,14 +16,28 @@ class Post extends Main {
 	 * @param  int $id The id of the post
 	 */
 	public function show($id = null) {
-        $commentModel = $this->getModel('CommentModel');
-        if (isset($_POST['commentSubmit']) && !empty($_POST['commentContent'])) {
-            $comment = $_POST['commentContent'];
-            $author_id = $_SESSION['id'];
-            $post_id = $id[0];
-            $commentModel->addComment($comment, $post_id, $author_id);
+		$commentModel = $this->getModel('CommentModel');
+        $commentMsg = null; 
+
+        if (isset($_POST['commentSubmit'])) {
+        	if(!empty($_POST['commentContent'])) {
+	            $comment = $_POST['commentContent'];
+	            $author_id = $_SESSION['id'];
+	            $post_id = $id[0];
+	            $commentStatus = $commentModel->addComment($comment, $post_id, $author_id);
+
+	            if($commentStatus) {
+	            	$commentMsg = 'Thanks for the comment!';
+	            } else {
+	            	$commentMsg = 'Something went wrong. Please, Try again.';
+	            }
+	        } else {
+	        	$commentMsg = 'Please, leave a meaningfull comment. I don\'t need your blank bullshits. Thanks! :)'; 
+	        }
         }
-       $comments = $commentModel->listComments($id[0]);
+       	
+       	$comments = $commentModel->listComments($id[0]);
+
 		$tag = $this->getModel('TagModel');
 		$post = $this->getModel('PostModel');
 
@@ -35,6 +49,7 @@ class Post extends Main {
 		$tags = $tag->get($post[0]['id']);
 
 		$data = [
+			'commentMsg' => $commentMsg,
 			'post' => $post,
 			'tags' => $tags,
             'comments' => $comments

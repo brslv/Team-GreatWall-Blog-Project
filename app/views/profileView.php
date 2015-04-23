@@ -14,17 +14,31 @@
                 
                 <div class="page-content row">
                     <div class="eight columns">
+                        <h5 class="u-bold">Latest 5 comments: </h5>
+                        <?php if($data['myComments']) : ?>
+                            <?php $commentsCount = 1; ?>
+                            <?php foreach($data['myComments'] as $comment) : ?>
+                                <?php if($commentsCount <= 5) : ?>
+                                    <h5>
+                                        On: 
+                                        <a class="u-bold" href="<?php echo Config::get('paths', 'root'); ?>post/show/<?php echo $comment->post_id; ?>">
+                                            <?php echo $comment->post_title; ?>
+                                        </a>
+                                    </h5>
+                                    <div style="margin-left: 20px;">
+                                        <p><?php echo $comment->content; $commentsCount++; ?></p>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                    
+                    <div class="four columns">
                         <h5 class="u-bold">Current information: </h5>
                         Username: <?php echo $_SESSION['username']; ?> <br />
                         Email: <?php echo $_SESSION['email']; ?><br />
                         Role: <?php echo $_SESSION['role']; ?> <br /><br />
                         
-                        <h5 class="u-bold">Latest 5 comments: </h5>
-                        <p>This is a comment</p>
-                        <p>This is a longer comment Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                    </div>
-                    
-                    <div class="four columns">
                         <h5>Options: </h5>
                         <ul class="non-bullet">
                             <li><a href="">Change username</a></li>

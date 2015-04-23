@@ -2,7 +2,7 @@
 
 <main class="main container row">
     <section class="eight columns">
-        <?php foreach($data as $d):?>
+        <?php foreach($data['posts'] as $d):?>
 
             <article class="post">
                 <h3 class="u-bold">
@@ -12,7 +12,7 @@
                 </h3>
 
                 <div class="post-meta u-upper u-bold">
-                    Post added by <a href=""><?php echo $d['author_username']; ?></a> 
+                    Post added by <?php echo $d['author_username']; ?>
                     in <a href=""><?php echo $d['category']; ?></a> 
                     on <a href=""><?php echo $d['publish_date']; ?></a>
                 </div>

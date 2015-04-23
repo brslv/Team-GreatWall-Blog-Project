@@ -71,7 +71,14 @@ class User extends Main {
 			Redirect::to('homepage');
 		}
 
-		$this->getView('profileView');
+		$commentModel = $this->getModel('CommentModel');
+		$myComments = $commentModel->getMine();
+
+		$data = [
+			'myComments' => $myComments,
+		];
+
+		$this->getView('profileView', $data);
 	}
 
 	/**
