@@ -11,8 +11,7 @@ class Home extends Main {
 	 */
 	public function index() {
 		if(isset($_POST['searchBar'])) {
-			$term = urlencode($_POST['searchBar']);
-			Redirect::to('search/master/' . $term);
+			Redirect::to('search/master/?term=' . rawurlencode(rawurlencode($_POST['searchBar'])));
 		}
 
 		$home = $this->getModel('PostModel');

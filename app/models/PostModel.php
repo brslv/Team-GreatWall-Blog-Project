@@ -27,7 +27,7 @@ class PostModel extends MainModel {
 			$result = $query->execute([
 				':postTitle' => filter_input(INPUT_POST, 'postTitle'),
 				':postContent' => filter_input(INPUT_POST, 'postContent'),
-				':postExcerpt' => trim(substr(rtrim(filter_input(INPUT_POST, 'postContent'), '</p>'), 0, 500)) . "...",
+				':postExcerpt' => trim(substr(rtrim(filter_input(INPUT_POST, 'postContent'), '</p>'), 0, 500)) . "...</p>",
 				':postAuthorId' => $_SESSION['id'],
 				':postDate' => date('Y-m-d'),
 				':status' => (int) $_POST['postVisibility'],

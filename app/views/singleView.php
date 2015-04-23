@@ -26,7 +26,7 @@
                     <em>
                         <?php if($tagCount < 1) echo 'no tags for this cool post, which is sad, by the way...'; ?>
                         <?php foreach($data['tags'] as $tag) : ?>
-                            <a href="<?php echo Config::get('paths', 'root'); ?>search/tag/<?php echo $tag->tag_title; ?>"><?php echo $tag->tag_title; ?></a>
+                            <a href="<?php echo Config::get('paths', 'root'); ?>search/tag/?name=<?php echo rawurlencode(rawurlencode($tag->tag_title)); ?>"><?php echo $tag->tag_title; ?></a>
                             <?php if($counter < $tagCount) echo ', '; ?>
                         <?php $counter++; endforeach; ?>
                     </em>

@@ -14,19 +14,21 @@ class Search extends Main {
 	 * 
 	 * @param  string $tagName
 	 */
-	public function tag($tagName = null) {
-		if($tagName == null) {
+	public function tag() {
+		if(isset($_GET['name']) && !empty(trim($_GET['name']))) {
+			$name = rawurlencode($_GET['name']);
+		} else {
 			Redirect::to('homepage');
 		}
 
-		$tagName = trim(urldecode($tagName[0]));
+		$tagName = trim(rawurldecode($name));
 
 		$searchModel = $this->getModel('SearchModel');
-		$posts = $searchModel->searchByTag($tagName);
+		$posts = $searchModel->searchByTag(rawurldecode($tagName));
 		$posts = !empty($posts) ? $posts : null;
 
 		$data = [
-			'searchTerm' => $tagName,
+			'searchTerm' => rawurldecode($tagName),
 			'results' => $posts,
 		];
 
@@ -43,15 +45,19 @@ class Search extends Main {
 	 * 
 	 * @param  string $term The searched term
 	 */
-	public function master($term) {
-		$term = trim(urldecode($term[0]));
+	public function master() {
+		if(isset($_GET['term']) && !empty(trim($_GET['term']))) {
+			$term = rawurldecode($_GET['term']);
+		} else {
+			Redirect::to('homepage');
+		}
 
 		$results = [];
 		
 		$searchModel = $this->getModel('SearchModel');
 
 		// Get all the posts, containing the searched term
-		$posts = $searchModel->post($term);
+		$posts = $searchModel->post(rawurldecode($term));
 		$addToResults = true;
 		if(!empty($posts)) {
 			foreach ($posts as $p) {

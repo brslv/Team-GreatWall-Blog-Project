@@ -8,8 +8,8 @@ class SearchModel extends MainModel {
 	 * @param  string $term
 	 */
 	public function post($term) {
-		$term = preg_replace("/[^0-9A-Za-z]/i", "", $term);
-		$query = "SELECT * FROM posts WHERE status = 1 AND WHERE content LIKE concat('%', :content, '%') OR title LIKE concat('%', :title, '%')";
+		// $term = preg_replace("/[^0-9A-Za-z]/i", "", $term);
+		$query = "SELECT * FROM posts WHERE status = 1 AND (content LIKE concat('%', :content, '%') OR title LIKE concat('%', :title, '%'))";
 		
 		$stmt = $this->db->prepare($query);
 		$stmt->execute([
