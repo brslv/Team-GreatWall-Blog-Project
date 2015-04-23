@@ -35,10 +35,12 @@ class PostModel extends MainModel {
 			]);
 
 			$insertedPostId = $this->db->lastInsertId();
-
-			$tags = $this->tag->parseTags();
-			$this->tag->addTags();
-			$this->tag->addTaxonomy($insertedPostId);
+			
+			if(!empty($_POST['postTags'])) { 
+				$tags = $this->tag->parseTags();
+				$this->tag->addTags();
+				$this->tag->addTaxonomy($insertedPostId);
+			}
 
 			return $result;
 		}
