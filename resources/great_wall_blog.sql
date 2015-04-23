@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2015 at 10:15 PM
--- Server version: 5.5.41-0ubuntu0.14.04.1
+-- Generation Time: Apr 23, 2015 at 04:41 PM
+-- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -39,6 +39,36 @@ CREATE TABLE IF NOT EXISTS `categories` (
 INSERT INTO `categories` (`id`, `title`) VALUES
 (1, 'Category one'),
 (2, 'Category two');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `content`, `post_id`, `author_id`) VALUES
+(1, '<p>Simple comment!</p>', 2, 2),
+(2, '<p>It works?</p>', 2, 2),
+(3, '<h1>K?</h1>', 2, 2),
+(4, '<p>Something</p>', 2, 2),
+(5, '<p>Testing comment msg</p>', 2, 2),
+(6, '<p>Testing comment msg</p>', 2, 2),
+(7, '<p>Testing comment msg</p>', 2, 2),
+(8, '<p>Lemme comment this bitch up</p>', 1, 1),
+(9, '<p>Simple</p>', 1, 1),
+(10, '<p>Това е от петко сертов</p>', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -80,16 +110,15 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `title` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `excerpt`, `author_id`, `category_id`, `publish_date`, `status`) VALUES
-(1, 'Lorem impsum...', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.<strong> Many desktop publishing packages</strong> and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ''Content here, content here'', making it look like readable English.<strong> Many desktop publishing packages</strong> and web page editors now use Lorem Ipsum as their default model text, and a search for ''lorem ipsum'' will uncover many web sites still in the...', 1, 1, '2015-04-21', 1),
-(2, 'Running the (half) marathon in North Korea', '<p>Last weekend I was one of 630 foreigners to participate in the 2015 Pyongyang Marathon. It was the second year the regime in North Korea opened the marathon to foreign amateur runners. When I read about it I knew that this was something I needed to do.</p>\r\n<p>I wanted to run this marathon for two reasons. For one it seemed to be the perfect excuse to make a trip to this country. I am a keen adventure traveler, having been to many exotic places such as Nepal, Mongolia, the Golden Triangle and the Tibetan Plateaux. I live in Beijing and have visited pretty much every country in Asia but, despite its proximity to China, I&rsquo;ve never made it to this outpost of society.</p>\r\n<p>The other reason I was drawn to visit North Korea is the constant exposure the country receives in the media. Kim Jung Un is in the news so much, I come across one or two articles about him or his country every week. I see photos of him constantly, either as part of a report or as part of a spoof. I felt it was about time to make my own picture of the country, of its people, and of the reality they live under.</p>', '<p>Last weekend I was one of 630 foreigners to participate in the 2015 Pyongyang Marathon. It was the second year the regime in North Korea opened the marathon to foreign amateur runners. When I read about it I knew that this was something I needed to do.</p>\r\n<p>I wanted to run this marathon for two reasons. For one it seemed to be the perfect excuse to make a trip to this country. I am a keen adventure traveler, having been to many exotic places such as Nepal, Mongolia, the Golden Triangle and...', 1, 1, '2015-04-21', 1),
-(3, 'The state of storytelling in the internet age', '<p id="add2" class="graf--p graf--first"><a class="markup--anchor markup--p-anchor" href="http://www.usatoday.com/story/life/2015/04/13/serial-podcast-undisclosed/25501075/" rel="nofollow" data-href="http://www.usatoday.com/story/life/2015/04/13/serial-podcast-undisclosed/25501075/">Podcasts are blowing up</a>, great stories are reaching more people than ever, people are paying for content, and the modern web is giving the world a better platform to tell stories than the world has ever seen.</p>\r\n<p id="1f44" class="graf--p">But news divisions are still shrinking, great publications are still failing, local blogs are still shutting down, and <a class="markup--anchor markup--p-anchor" href="http://fusion.net/story/45832/to-all-the-young-journalists-asking-for-advice/" rel="nofollow" data-href="http://fusion.net/story/45832/to-all-the-young-journalists-asking-for-advice/">journalists are telling our youth to avoid the profession</a>.</p>\r\n<h3 id="eba3" class="graf--h4">The age of wisdom</h3>\r\n<p id="3982" class="graf--p graf--empty">&nbsp;</p>\r\n<p id="28ef" class="graf--p">We have the entire world&rsquo;s knowledge bank at our fingertips 24&ndash;7. If you ask me who the first American daredevil was, I can pull up <a class="markup--anchor markup--p-anchor" href="http://en.wikipedia.org/wiki/Sam_Patch" rel="nofollow" data-href="http://en.wikipedia.org/wiki/Sam_Patch">Sam Patch</a>&rsquo;s name in 5 seconds.</p>\r\n<p id="2ce1" class="graf--p">Fifty years ago the number of journalists whose work an individual could access on a daily basis was in the hundreds or thousands at best. Today it&rsquo;s in the tens of millions. A reporter for a local paper in Guam could write a story that gets read by ten thousand people in Auckland.</p>\r\n<h3 id="1e76" class="graf--p">Our access to knowledge and stories has never been greater, and it&rsquo;s growing every day.</h3>\r\n<h3 id="f380" class="graf--h4">The age of foolishness</h3>\r\n<p id="ebca" class="graf--p graf--empty">&nbsp;</p>\r\n<p id="2b12" class="graf--p graf--startsWithDoubleQuote">&ldquo;21 things only a 90s kid can appreciate&rdquo; will probably get 50 times more traffic than a post about climate change or political corruption.</p>\r\n<p id="a0f9" class="graf--p">Inflammatory or malicious stories on all sides of the political spectrum can take off just as easily as a viral listicle.</p>\r\n<p id="2434" class="graf--p">It&rsquo;s easier than ever to say something silly or foolish to your friends in an off-handed manner, and it&rsquo;s easier than ever <a class="markup--anchor markup--p-anchor" href="http://www.nytimes.com/2015/02/15/magazine/how-one-stupid-tweet-ruined-justine-saccos-life.html?_r=0" rel="nofollow" data-href="http://www.nytimes.com/2015/02/15/magazine/how-one-stupid-tweet-ruined-justine-saccos-life.html?_r=0">for that foolish thing to ruin your life</a>.</p>', '<p id="add2" class="graf--p graf--first"><a class="markup--anchor markup--p-anchor" href="http://www.usatoday.com/story/life/2015/04/13/serial-podcast-undisclosed/25501075/" rel="nofollow" data-href="http://www.usatoday.com/story/life/2015/04/13/serial-podcast-undisclosed/25501075/">Podcasts are blowing up</a>, great stories are reaching more people than ever, people are paying for content, and the modern web is giving the world a better platform to tell stories than the world has ever seen.</p>...', 1, 1, '2015-04-21', 1);
+(1, 'Testing tags', '<p>This text is nothing fancy, but a tag-tester example.</p>', '<p>This text is nothing fancy, but a tag-tester example....</p>', 1, 1, '2015-04-23', 1),
+(2, 'Another tag-tester', '<p>Tag tester again.</p>', '<p>Tag tester again....</p>', 1, 1, '2015-04-23', 1);
 
 -- --------------------------------------------------------
 
@@ -102,18 +131,15 @@ CREATE TABLE IF NOT EXISTS `tags` (
   `title` varchar(100) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `title`) VALUES
-(2, 'ipsum'),
-(1, 'lorem'),
-(4, 'marathon'),
-(3, 'medium'),
-(5, 'storytelling');
+(2, 'simple'),
+(1, 'tag');
 
 -- --------------------------------------------------------
 
@@ -133,11 +159,7 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
 INSERT INTO `taxonomy` (`post_id`, `tag_id`) VALUES
 (1, 1),
 (1, 2),
-(2, 3),
-(2, 1),
-(2, 4),
-(3, 5),
-(3, 3);
+(2, 1);
 
 -- --------------------------------------------------------
 
