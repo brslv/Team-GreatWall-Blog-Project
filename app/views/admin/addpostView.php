@@ -1,5 +1,5 @@
 <h5>Add new post: </h5>
-          
+
             <?php if($data['msg'] != null) : ?>
                 <div class="msg">
                     <?php echo $data['msg']; ?>

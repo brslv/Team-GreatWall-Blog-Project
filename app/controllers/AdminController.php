@@ -11,7 +11,6 @@ class Admin extends Main {
 	 */
 	public function index() {
 		$user = $this->getModel('UserModel');
-
 		if ($user->isAdmin()) {
 			Redirect::to('admin/addPost');
 		} else {

@@ -70,10 +70,12 @@ class UserModel extends MainModel {
 		if (isset($_SESSION['username'])) {
 			if ($_SESSION['role'] != 'admin') {
 				return false;
+			} else {
+				return true;
 			}
 		}
 
-		return true;
+		return false;
 	}
 
 	/**
