@@ -8,10 +8,6 @@ Todos:
 3. Create manage posts page
 4. Create manage pages page
 5. Create manage categories page
-6. Work on sidebar:
-	- List 5 categories
-	- List 10 most used tags
-	- Limit the posts list to 5 posts
 7. Pagination!
 8. Profiles
 	- Option to change username
