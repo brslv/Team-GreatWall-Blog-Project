@@ -104,4 +104,14 @@ class TagModel extends MainModel {
 		return $result;
 	}
 
+	public function mostPopularTags() {
+		$query = 'SELECT tags.title, COUNT(*) AS tag_magnitude ';
+		$query.= 'FROM taxonomy INNER JOIN tags ';
+		$query.= 'ON taxonomy.tag_id = tags.id ';
+		$query.= 'GROUP BY tag_id ';
+		$query.= 'ORDER BY tag_magnitude DESC';
+
+		$stmt = $this->db->query($query);
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	}
 }

@@ -15,7 +15,17 @@ class Home extends Main {
 		}
 
 		$home = $this->getModel('PostModel');
+		$tagModel = $this->getModel('TagModel');
+		
 		$allVisiblePosts = $home->getPosts();
-		$this->getView('homeView', $allVisiblePosts);
+		$mostPopularTags = $tagModel->mostPopularTags();
+
+
+		$data = [
+			'posts' => $allVisiblePosts,
+			'tags' => $mostPopularTags,
+		];
+
+		$this->getView('homeView', $data);
 	}
 }

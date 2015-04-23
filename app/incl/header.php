@@ -21,17 +21,17 @@
                 </ul>
             </nav>
 
-            <?php if(!empty($data)):?>
+            <?php if(!empty($data['posts'])):?>
                 <div class="welcome">
                     <h5 class="u-bold">Latest post: </h5></span>
                     <h1 class="u-bold">
                         <a href="<?php echo Config::get('paths', 'root') ?>post/show/<?php echo $data[0]['id']; ?>">
-                            <?php echo $data[0]['title'];?>
+                            <?php echo $data['posts'][0]['title'];?>
                         </a>
                     </h1>
                     
                     <p>
-                        Published by <a href="" class="u-bold"> <?php echo $data[0]['author_username']; ?>.</a> 
+                        Published by <a href="" class="u-bold"> <?php echo $data['posts'][0]['author_username']; ?>.</a> 
                     </p>
                 </div>
 
