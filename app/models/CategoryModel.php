@@ -6,7 +6,6 @@ class CategoryModel extends MainModel{
         $query = 'SELECT * FROM categories';
         $stmt = $this->db->query($query);
         $stmt = $stmt->fetchAll(PDO::FETCH_OBJ);
-
         return  $stmt;
     }
 
@@ -19,7 +18,14 @@ class CategoryModel extends MainModel{
         ]);
         $catId = $stmt->fetchAll(PDO::FETCH_OBJ);
         return $catId[0]->id;
-
     }
 
+    public function add() {
+        if(!empty(!empty($_POST['categoryTitle']))) {
+            $stmt = $this->db->prepare('INSERT INTO categories(title) VALUES(:title)');
+            return $stmt->execute([
+                ':title' => $_POST['categoryTitle'],
+            ]);
+        }
+    }
 }

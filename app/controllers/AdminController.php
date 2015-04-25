@@ -54,7 +54,35 @@ class Admin extends Main {
 
 		$this->getView('adminView', $data);
 	}
+    public function addCategory() {
+        if (!$this->getModel('UserModel')->isAdmin()) {
+            Redirect::to('homepage');
+        }
 
+        $msg = null;
+        $viewData = null;
+        //$categoriesModel = $this->getModel('CategoryModel');
+       // $allCategories = $categoriesModel->getCategories();
+        if (isset($_POST['categorySubmit'])) {
+            $category = $this->getModel('CategoryModel');
+
+            $result = $category->addCategory();
+
+            if ($result) {
+                $msg = 'Category added successfully.';
+            } else {
+                $msg = 'Don\'t cheat, bro! Fill in all the blanks.';
+            }
+        }
+
+        $data = [
+            'msg' => $msg,
+            'action' => 'addCategory',
+            //'categories' => $allCategories
+        ];
+
+        $this->getView('adminView', $data);
+    }
 	/**
 	 * Loads the admin panel and specifies the sub-view in the views/admin folder.
 	 *
@@ -66,7 +94,7 @@ class Admin extends Main {
 		}
 		$msg = null;
 		$pageModel = $this->getModel('PageModel');
-
+        $categoryModel = $this->getModel('CategoryModel');
 		if (empty($thing)) {
 			$this->index();
 		} 
@@ -107,7 +135,14 @@ class Admin extends Main {
 		// Categories //
 		/////////////////
 		else if ($thing[0] == 'categories') {
-			$data = [
+            $categories = $categoryModel->getCategories();
+            if(isset($_POST['categorySubmit'])) {
+                $msg = $categoryModel->add();
+                $msg = $msg == 1 ? 'Successfully added new category.' : 'Something went wrong. Please, try again.';
+                Redirect::to('admin/manage/categories');
+            }
+
+            $data = [
 				'msg' => $msg,
 				'action' => 'manageCategories',
 			];
