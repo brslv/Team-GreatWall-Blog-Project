@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Apr 23, 2015 at 04:41 PM
--- Server version: 5.5.43-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.9
+-- Host: 127.0.0.1
+-- Generation Time: 
+-- Версия на сървъра: 5.6.21
+-- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,17 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Структура на таблица `categories`
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+`id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `categories`
+-- Схема на данните от таблица `categories`
 --
 
 INSERT INTO `categories` (`id`, `title`) VALUES
@@ -43,19 +42,18 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comments`
+-- Структура на таблица `comments`
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `content` text NOT NULL,
   `post_id` int(11) NOT NULL,
-  `author_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+  `author_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `comments`
+-- Схема на данните от таблица `comments`
 --
 
 INSERT INTO `comments` (`id`, `content`, `post_id`, `author_id`) VALUES
@@ -73,19 +71,18 @@ INSERT INTO `comments` (`id`, `content`, `post_id`, `author_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Структура на таблица `pages`
 --
 
 CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `content` text NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pages`
+-- Схема на данните от таблица `pages`
 --
 
 INSERT INTO `pages` (`id`, `title`, `content`, `status`) VALUES
@@ -96,24 +93,22 @@ INSERT INTO `pages` (`id`, `title`, `content`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Структура на таблица `posts`
 --
 
 CREATE TABLE IF NOT EXISTS `posts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `excerpt` text NOT NULL,
   `author_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
   `publish_date` date NOT NULL,
-  `status` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `title` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `posts`
+-- Схема на данните от таблица `posts`
 --
 
 INSERT INTO `posts` (`id`, `title`, `content`, `excerpt`, `author_id`, `category_id`, `publish_date`, `status`) VALUES
@@ -123,18 +118,16 @@ INSERT INTO `posts` (`id`, `title`, `content`, `excerpt`, `author_id`, `category
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tags`
+-- Структура на таблица `tags`
 --
 
 CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+`id` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `tags`
+-- Схема на данните от таблица `tags`
 --
 
 INSERT INTO `tags` (`id`, `title`) VALUES
@@ -144,7 +137,7 @@ INSERT INTO `tags` (`id`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `taxonomy`
+-- Структура на таблица `taxonomy`
 --
 
 CREATE TABLE IF NOT EXISTS `taxonomy` (
@@ -153,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `taxonomy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `taxonomy`
+-- Схема на данните от таблица `taxonomy`
 --
 
 INSERT INTO `taxonomy` (`post_id`, `tag_id`) VALUES
@@ -164,29 +157,102 @@ INSERT INTO `taxonomy` (`post_id`, `tag_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура на таблица `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(60) NOT NULL,
   `role` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `email` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Схема на данните от таблица `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `role`, `email`) VALUES
 (1, 'admin', '$2y$10$NOJEXFa32r4MT6HhDiJnc.ij.tLCBB8puSjESpEYZK78LKUoB8B.C', 'Петко', 'Сертов', 'admin', 'petko@greece.com'),
-(2, 'kilatamaika', '$2y$10$FjkwIeqXLqh3jhjyCWlcpuXGmBoCW8uzSvk9sLvOmXJ1EsRbt/Omy', 'Килата', 'Майка', 'user', 'kilata@maika.com');
+(2, 'kilatamaika', '$2y$10$FjkwIeqXLqh3jhjyCWlcpuXGmBoCW8uzSvk9sLvOmXJ1EsRbt/Omy', 'Килата', 'Майка', 'user', 'kilata@maika.com'),
+(3, 'ananas', '$2y$10$chYGn.xjHGV5msMFnQG0ruQo1IjLM7g3EEWzJXs1aZtvlLgXhcAY6', 'Anastas', 'Anastasov', 'user', 'ananas@abv.bg');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+ ADD PRIMARY KEY (`id`), ADD KEY `title` (`title`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `title` (`title`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
