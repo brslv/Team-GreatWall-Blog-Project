@@ -9,7 +9,7 @@
 <?php endif; ?>
 
 <form action="" method="POST">
-    <input type="text" name="postTitle" class="full-input" placeholder="Enter title" /> <br />
+    <input type="text" name="postTitle" class="full-input" placeholder="Enter title" />  <br />
 
     <textarea name="postContent" class="full-textarea" placeholder="Enter post content"></textarea> <br />
 

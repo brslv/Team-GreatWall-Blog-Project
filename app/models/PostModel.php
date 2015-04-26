@@ -87,5 +87,15 @@ class PostModel extends MainModel {
 		$result = $query->fetchAll(PDO::FETCH_ASSOC);
 		return $result ? $result : false;
 	}
+    public function delete($postId){
+        if(isset($_SESSION['role'])) {
+            if($_SESSION['role'] == 'admin') {
+                $stmt = $this->db->prepare("DELETE FROM posts WHERE id = :postid");
+                return $stmt->execute([
+                    ':postid' => $postId,
+                ]);
+            }
+        }
+    }
 
 }
