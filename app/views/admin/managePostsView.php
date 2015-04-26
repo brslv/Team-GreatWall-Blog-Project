@@ -1,4 +1,3 @@
-<?php require_once '../app/incl/header-tiny.php'; ?>
 <h5>Manage posts: </h5>
 
 <?php if(!empty($data['posts'])) : ?>
@@ -18,4 +17,3 @@
         </div>
     <?php endforeach; ?>
 <?php endif; ?>
-<?php require_once '../app/incl/footer.php'; ?>

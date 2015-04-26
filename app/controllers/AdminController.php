@@ -78,11 +78,11 @@ class Admin extends Main {
             $model = $this->getModel('PostModel');
             $allPosts = $model->getPosts();
             $data = [
-
+				'action' => 'managePosts',
                 'posts' => $allPosts,
             ];
 
-            $this->getView('admin/managePostsView', $data);
+            $this->getView('adminView', $data);
         }
 
 		/////////////
