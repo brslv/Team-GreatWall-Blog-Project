@@ -9,7 +9,7 @@
                 
                 <div class="post-meta u-upper u-bold">
                     Post added by <?php echo $data['post'][0]['author_username']; ?>
-                    in <a href="<?php Config::get('paths', 'root'); ?>search/category/?name=<?php echo rawurlencode(rawurlencode($data['post'][0]['category'])); ?>"><?php echo $data['post'][0]['category']; ?></a>
+                    in <a href="<?php echo Config::get('paths', 'root'); ?>search/category/?name=<?php echo rawurlencode(rawurlencode($data['post'][0]['category'])); ?>"><?php echo $data['post'][0]['category']; ?></a>
                     on <a href=""><?php echo $data['post'][0]['publish_date']; ?></a>
                 </div>
                 

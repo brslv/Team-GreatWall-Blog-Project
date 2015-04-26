@@ -13,7 +13,7 @@
 
                 <div class="post-meta u-upper u-bold">
                     Post added by <?php echo $d['author_username']; ?>
-                    in <a href="<?php Config::get('paths', 'root'); ?>search/category/?name=<?php echo rawurlencode(rawurlencode($d['category'])); ?>"><?php echo $d['category']; ?></a>
+                    in <a href="<?php Config::get('paths', 'root'); ?>search/category/?name=<?php echo rawurlencode(rawurlencode($d['category'])); ?>"><?php echo $d['category']; ?></a> 
                     on <a href=""><?php echo $d['publish_date']; ?></a>
                 </div>
 
