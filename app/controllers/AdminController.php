@@ -74,14 +74,16 @@ class Admin extends Main {
 		////////////
 		//Posts //
 		////////////
-		else if ($thing[0] == 'posts') {
-			$data = [
-				'msg' => $msg,
-				'action' => 'managePosts',
-			];
+        else if ($thing[0] == 'posts') {
+            $model = $this->getModel('PostModel');
+            $allPosts = $model->getPosts();
+            $data = [
 
-			$this->getView('adminView', $data);
-		}
+                'posts' => $allPosts,
+            ];
+
+            $this->getView('admin/managePostsView', $data);
+        }
 
 		/////////////
 		// Pages //
@@ -149,7 +151,17 @@ class Admin extends Main {
 		//TODO: Add functionalities - delete post and category //
 		///////////////////////////////////////////////////////////
 
-		// if($node == 'post') {} 
+        if($node == 'post') {
+            if(!isset($_SESSION['role'])) {
+                if($pageId == null || $_SESSION['role'] != 'admin') {
+                    Redirect::to('homepage');
+                }
+            } else {
+                $pageModel = $this->getModel('PostModel');
+                $pageModel->delete($pageId);
+                Redirect::to('admin/manage/posts');
+            }
+        }
 		// if($node == 'category') {}
 	}
 
