@@ -162,7 +162,17 @@ class Admin extends Main {
                 Redirect::to('admin/manage/posts');
             }
         }
-		// if($node == 'category') {}
+		if($node == 'category') {
+            if(!isset($_SESSION['role'])) {
+                if($pageId == null || $_SESSION['role'] != 'admin') {
+                    Redirect::to('homepage');
+                }
+            } else {
+                $pageModel = $this->getModel('CategoryModel');
+                $pageModel->delete($pageId);
+                Redirect::to('admin/manage/categories');
+            }
+        }
 	}
 
 }

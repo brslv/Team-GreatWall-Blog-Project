@@ -28,4 +28,14 @@ class CategoryModel extends MainModel{
             ]);
         }
     }
+    public function delete($categoryId){
+        if(isset($_SESSION['role'])) {
+            if($_SESSION['role'] == 'admin') {
+                $stmt = $this->db->prepare("DELETE FROM categories WHERE id = :categoryid");
+                return $stmt->execute([
+                    ':categoryid' => $categoryId,
+                ]);
+            }
+        }
+    }
 }
