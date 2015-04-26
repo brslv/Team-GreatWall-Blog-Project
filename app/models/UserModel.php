@@ -93,5 +93,29 @@ class UserModel extends MainModel {
 			return $result[0]->password;
 		}
 	}
+    public  function  changeUsername($newUsername){
+        if(isset($newUsername)){
+            $query = "UPDATE users SET username =:username WHERE id=:id";
+            $result = $this->db->prepare($query);
+            return $result->execute([
+                ":username"=>$newUsername,
+                ":id"=>$_SESSION['id']
+            ]);
+        }else{
+            return false;
+        }
+    }
+    public  function  changePassword($newPassword){
+        if(isset($newPassword)){
+            $query = "UPDATE users SET password =:password WHERE id=:id";
+            $result = $this->db->prepare($query);
+            return $result->execute([
+                ":password"=>password_hash($newPassword,PASSWORD_DEFAULT),
+                ":id"=>$_SESSION['id']
+            ]);
+        }else{
+            return false;
+        }
+    }
 
 }

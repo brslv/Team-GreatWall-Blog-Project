@@ -95,5 +95,27 @@ class User extends Main {
 		session_unset('role');
 		Redirect::to('homepage');
 	}
+    public  function change($thing){
+        $userModel = $this->getModel('UserModel');
+        if(empty($thing)){
+            Redirect::to("user/me");
+        }
+        if($thing[0]=='password'){
+            if(isset($_POST['submit'])){
+                $newPassword = $_POST['password'];
+                $userModel->changePassword($newPassword);
+            }
+            $this->getView('changePasswordView');
 
+        }else if($thing[0]=='username'){
+
+
+            if(isset($_POST['submit'])){
+                $newUsername = $_POST['newUserName'];
+                $userModel->changeUsername($newUsername);
+            }
+            $this->getView('changeUsernameView');
+        }
+
+    }
 }
