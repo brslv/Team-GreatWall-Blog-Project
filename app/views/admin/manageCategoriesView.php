@@ -6,8 +6,8 @@
 <?php endif; ?>
 
 <form action="" method="POST">
-        <input name="categoryTitle" placeholder="Enter category"/input> <br />
-        <input type="submit" name="categorySubmit" value="Submit category" />
+        <input name="categoryTitle" type="text" class="full-input" placeholder="Enter category"/input> <br />
+        <input type="submit" name="categorySubmit" value="Submit new category" />
 </form>
 
 <h5>Manage categories: </h5>

@@ -41,8 +41,8 @@
                         
                         <h5>Options: </h5>
                         <ul class="non-bullet">
-                            <li><a href="">Change username</a></li>
-                            <li><a href="">Change password</a></li>
+                            <li><a href="<?php Config::get('paths', 'root'); ?>change/username">Change username</a></li>
+                            <li><a href="<?php Config::get('paths', 'root'); ?>change/password">Change password</a></li>
                         </ul>
                     </div>
                 </div>

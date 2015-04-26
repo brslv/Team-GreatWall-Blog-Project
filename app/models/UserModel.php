@@ -93,6 +93,13 @@ class UserModel extends MainModel {
 			return $result[0]->password;
 		}
 	}
+
+	/**
+	 * Changes username
+	 * 
+	 * @param  string $newUsername
+	 * @return boolean
+	 */
     public  function  changeUsername($newUsername){
         if(isset($newUsername)){
             $query = "UPDATE users SET username =:username WHERE id=:id";
@@ -105,6 +112,13 @@ class UserModel extends MainModel {
             return false;
         }
     }
+
+    /**
+     * Changes password
+     * 
+     * @param  string $newPassword
+     * @return boolean             
+     */
     public  function  changePassword($newPassword){
         if(isset($newPassword)){
             $query = "UPDATE users SET password =:password WHERE id=:id";

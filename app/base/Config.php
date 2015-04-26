@@ -50,7 +50,7 @@ class Config {
 			"db" => [
 				"host" => "localhost",
 				"dbuser" => "root",
-				"dbpass" => "",
+				"dbpass" => "root",
 				"dbname" => "great_wall_blog",
 			],
 

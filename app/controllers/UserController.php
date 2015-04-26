@@ -95,26 +95,48 @@ class User extends Main {
 		session_unset('role');
 		Redirect::to('homepage');
 	}
+
     public  function change($thing){
         $userModel = $this->getModel('UserModel');
+        $msg = null;
+
         if(empty($thing)){
             Redirect::to("user/me");
         }
         if($thing[0]=='password'){
             if(isset($_POST['submit'])){
                 $newPassword = $_POST['password'];
-                $userModel->changePassword($newPassword);
+                if($userModel->changePassword($newPassword)) {
+                	$msg = 'You have changed your password.';
+                } else {
+                	$msg = 'Something went wrong. Please, try again.';
+                }
             }
-            $this->getView('changePasswordView');
+
+            $data = [
+            	'message' => $msg
+            ];
+
+            $this->getView('changePasswordView', $data);
 
         }else if($thing[0]=='username'){
 
 
             if(isset($_POST['submit'])){
                 $newUsername = $_POST['newUserName'];
-                $userModel->changeUsername($newUsername);
+                if($userModel->changeUsername($newUsername)) {
+                	$msg = 'You have changed your username successfull.';
+                } else {
+                	$msg = 'Something went wrong. Please, try again.';
+                }
+
             }
-            $this->getView('changeUsernameView');
+
+            $data = [
+            	'message' => $msg
+            ];
+
+            $this->getView('changeUsernameView', $data);
         }
 
     }
