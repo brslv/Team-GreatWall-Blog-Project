@@ -58,4 +58,56 @@ class Post extends Main {
 		$this->getView('singleView', $data);
 	}
 
+	/**
+	 * Provides options to add and manage posts
+	 *
+	 */
+	public function manage() {
+		if (!$this->getModel('UserModel')->isAdmin()) {
+			Redirect::to('homepage');
+		}
+
+		$msg = null;
+		$viewData = null;
+        $categoriesModel = $this->getModel('CategoryModel');
+        
+        $allPosts = $this->getModel('PostModel')->getPosts();
+        $allCategories = $categoriesModel->getCategories();
+		
+		if (isset($_POST['postSubmit'])) {
+			$post = $this->getModel('PostModel');
+			$result = $post->addPost();
+
+			if ($result) {
+				$msg = 'Post added successfully. Refresh the page to see it in the manage section.';
+			} else {
+				$msg = 'Don\'t cheat, bro! Fill in all the blanks.';
+			}
+		}
+
+		$data = [
+			'msg' => $msg,
+            'categories' => $allCategories,
+            'posts' => $allPosts
+		];
+
+		$this->getView('admin/managePostsView', $data);
+	}
+
+	/**
+	 * Delete a specified post
+	 * 
+	 * @param  int $id
+	 */
+	public function delete($id) {
+		if(!isset($_SESSION['role'])) {
+            if($id == null || $_SESSION['role'] != 'admin') {
+                Redirect::to('homepage');
+            }
+        } else {
+            $postModel = $this->getModel('PostModel');
+            $postModel->delete($id[0]);
+            Redirect::to('post/manage');
+        }
+	}
 }

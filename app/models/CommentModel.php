@@ -34,7 +34,7 @@ class CommentModel extends MainModel {
      * @return boolean/array The array of comments or false, if no comments.
      */
     public function getMine() {
-        $stmt = $this->db->prepare("SELECT comments.id, comments.content, comments.post_id, comments.author_id, users.username as author_username, users.firstname as author_firstname, users.lastname as author_lastname, posts.id as post_id, posts.title as post_title FROM comments INNER JOIN users ON comments.author_id = users.id INNER JOIN posts ON comments.post_id = posts.id WHERE comments.author_id = :author_id");
+        $stmt = $this->db->prepare("SELECT comments.id, comments.content, comments.post_id, comments.author_id, users.username as author_username, users.firstname as author_firstname, users.lastname as author_lastname, posts.id as post_id, posts.title as post_title FROM comments INNER JOIN users ON comments.author_id = users.id INNER JOIN posts ON comments.post_id = posts.id WHERE comments.author_id = :author_id ORDER BY id DESC");
         $stmt->execute([
             ':author_id' => $_SESSION['id']
         ]);
