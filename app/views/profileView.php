@@ -30,6 +30,8 @@
                                     </div>
                                 <?php endif; ?>
                             <?php endforeach; ?>
+                        <?php else : ?>
+                            <h5>You don't have any comments.</h5>
                         <?php endif; ?>
                     </div>
                     

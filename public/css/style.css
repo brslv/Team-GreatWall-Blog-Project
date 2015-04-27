@@ -937,6 +937,15 @@ label {
   margin-bottom: 50px;
   padding: 50px 50px; }
 
+.main-admin {
+  border: 5px solid #de4f4f;
+  margin: 50px;
+  background-image: url("../img/admin-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-position: top;
+  padding: 50px 50px; }
+
 .post {
   margin-bottom: 50px;
   padding-bottom: 50px;
@@ -1018,9 +1027,10 @@ label {
   border-left: 1px solid #191614;
   border-right: 1px solid #191614; }
   .list-item h5 {
+    font-size: 18px;
     margin-top: 4px; }
   .list-item .item-options {
-    margin-top: 10px; }
+    margin-top: 7px; }
   .list-item:last-child {
     border-bottom: 1px solid #191614; }
 

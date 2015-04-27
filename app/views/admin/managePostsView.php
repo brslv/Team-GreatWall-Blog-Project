@@ -1,7 +1,7 @@
 <?php // TODO: add Config::get('paths', 'incl') to all header and footer requires. ?>
 <?php require_once '../app/incl/header-tiny.php'; ?> 
 
-    <main class="main">
+    <main class="main-admin">
         <div class="row">
             <div class="twelve columns">
                 <?php if(isset($data)) : ?>
