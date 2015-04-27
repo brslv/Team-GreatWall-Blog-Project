@@ -110,4 +110,36 @@ class Post extends Main {
             Redirect::to('post/manage');
         }
 	}
+
+	public function edit($postId) {
+		$postModel = $this->getModel('PostModel');
+		$categories = $this->getModel('CategoryModel')->getCategories();
+		if(!$this->getModel('UserModel')->isAdmin()) {
+			Redirect::to('homepage');
+		}
+
+		if(empty($postId)) Redirect::to('post/manage');
+		else $postId = $postId[0];
+
+		$oldPostVersion = $postModel->getPostByid($postId);
+		$msg = null;
+		if(isset($_POST['updatePostSubmit'])) {
+			if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])) {
+				if($postModel->update($postId)) {
+					$msg = 'Successfully updated post';
+				} else {
+					$msg = 'Something went wrong. Please try again.';
+				}
+
+			}
+		}
+
+		$data = [
+			'oldVersion' => $oldPostVersion,
+			'msg' => $msg,
+			'categories' => $categories
+		];
+
+		$this->getView('admin/editPostView', $data);
+	}
 }

@@ -1,36 +1,48 @@
-<?php require_once Config::get('paths', 'views') . 'admin/addpostView.php';?>
+<?php // TODO: add Config::get('paths', 'incl') to all header and footer requires. ?>
+<?php require_once '../app/incl/header-tiny.php'; ?> 
 
-<h5>Add new post: </h5>
+    <main class="main-admin">
+        <div class="row">
+            <div class="twelve columns">
+                <h2 class="profile-name u-large-text u-text-center">
+                    Update post
+                </h2>
+            </div>
+        </div>
 
-<?php if($data['msg'] != null) : ?>
-    <div class="msg">
-        <?php echo $data['msg']; ?>
-    </div>
-<?php endif; ?>
+        <div class="row">
+            <section class="twelve columns">
+                <h5>Edit post: </h5>
+                <!-- <?php var_dump($data); ?> -->
+                <?php if($data['msg'] != null) : ?>
+                    <div class="msg">
+                        <?php echo $data['msg']; ?>
+                    </div>
+                <?php endif; ?>
 
-<form action="" method="POST">
-    <input type="text" name="postTitle" class="full-input" placeholder="Enter title" />  <br />
+                <form action="" method="POST">
+                    <input type="text" name="newTitle" class="full-input" value="<?php echo $data['oldVersion'][0]['title']; ?>" /> <br />
+                    
+                    <textarea name="newContent" class="full-textarea"><?php echo $data['oldVersion'][0]['content']; ?></textarea> <br />
 
-    <textarea name="postContent" class="full-textarea" placeholder="Enter post content"></textarea> <br />
+                    <select name="newCategory">
+                        <?php if(isset($data['categories'])):?>
+                            <?php foreach($data['categories'] as $d):?>
 
-    <label for="postTags">Insert tags: </label>
-    <input class="full-input" type="text" name="postTags" placeholder="Separate those bitches by comma: " />
+                                <option value="<?php echo $d->id;?>"><?php echo $d->title?></option>
 
-    <select name="postCategory">
-        <?php if(isset($data['categories'])):?>
-            <?php foreach($data['categories'] as $d):?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </select>
 
-                <option value="<?php echo $d->id;?>"><?php echo $d->title?></option>
-
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </select>
-
-    <select name="postVisibility">
-        <option value="1">Public</option>
-        <option value="0">Private</option>
-    </select>
-    <br />
-
-    <input type="submit" name="postSubmit" value="Submit post" />
-</form>
+                    <select name="newStatus">
+                        <option value="1">Public</option>
+                        <option value="0">Private</option>
+                    </select>
+                   
+                    <input type="submit" name="updatePostSubmit" value="Update post" />
+                </form>            </section>
+        </div>
+    </main>
+    
+<?php require_once '../app/incl/footer.php'; ?>

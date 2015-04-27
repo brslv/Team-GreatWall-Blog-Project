@@ -62,7 +62,7 @@
                                 </h5>
                             </div>
                             <div class="four columns u-text-right item-options">
-                                <a href="<?php echo Config::get('paths', 'root'); ?>admin/edit/post/<?php echo $post['id']; ?>">Edit</a> |
+                                <a href="<?php echo Config::get('paths', 'root'); ?>post/edit/<?php echo $post['id']; ?>">Edit</a> |
                                 <a href="<?php echo Config::get('paths', 'root'); ?>post/delete/<?php echo $post['id']; ?>">Delete</a>
                             </div>
                         </div>

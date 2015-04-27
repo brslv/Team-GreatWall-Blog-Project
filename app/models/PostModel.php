@@ -105,4 +105,20 @@ class PostModel extends MainModel {
         }
     }
 
+    public function update($postId) {
+    	$newTitle = $_POST['newTitle'];
+		$newContent = $_POST['newContent'];
+		$newCategory = $_POST['newCategory'];
+		$newStatus = $_POST['newStatus'];
+
+		$stmt = $this->db->prepare('UPDATE posts SET title = :title, content = :content, category_id = :category_id, status = :status WHERE id = :post_id');
+		return $stmt->execute([
+			':title' => $newTitle,
+			':content' => $newContent,
+			':category_id' => $newCategory,
+			':status' => $newStatus,
+			':post_id' => $postId
+		]);
+    }
+
 }
