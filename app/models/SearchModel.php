@@ -70,4 +70,18 @@ class SearchModel extends MainModel {
 
         return $posts;
     }
+
+    /**
+     * Performs a search by date
+     *  
+     * @param  string $ondate
+     * @return boolean
+     */
+    public function searchByDate($ondate) {
+    	$stmt = $this->db->prepare('SELECT * FROM posts WHERE publish_date = :ondate');
+    	$stmt->execute([
+    		':ondate' => $ondate
+		]);
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

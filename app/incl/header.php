@@ -4,11 +4,12 @@
     <title>This is the blog.</title>
     
     <!-- HARDCODE THE STYLE URL: -->
-    <link rel="stylesheet" href="http://localhost<?php echo Config::get('paths', 'root'); ?>/css/style.css" type="text/css"  />
     <script src="http://tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <link rel="stylesheet" href="http://localhost<?php echo Config::get('paths', 'root'); ?>/css/style.css" type="text/css"  />
     <script>
         tinymce.init({
             selector:'textarea',
+            body_id: "tinymceclass"
         });
     </script>
     

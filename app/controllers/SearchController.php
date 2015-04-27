@@ -64,11 +64,29 @@ class Search extends Main {
         $this->getView('searchView', $data);
     }
 
+    /**
+     * Retrieves all posts on published this date
+     * 
+     * @return string In a valid date format (YYYY-MM-DD)
+     */
+	public function ondate() {
+		if(isset($_GET['d']) && !empty(trim($_GET['d']))) {
+            $ondate = rawurldecode($_GET['d']);
+        } else {
+            Redirect::to('homepage');
+        }
 
-	///////////////////////////////////////////////////
-	// TODO: Implement searching on post-date click //
-	///////////////////////////////////////////////////
-	public function ondate() {}
+        $ondate = trim(rawurldecode($ondate));
+        $posts = $this->getModel('SearchModel')->searchByDate(rawurldecode($ondate));
+        $posts = !empty($posts) ? $posts : null;
+
+        $data = [
+            'searchTerm' => rawurldecode($ondate),
+            'results' => $posts,
+        ];
+
+        $this->getView('searchView', $data);
+	}
 
 	/**
 	 * Performs a search action, searching in posts titles, contents and tags.
