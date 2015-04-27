@@ -58,4 +58,34 @@ class Page extends Main {
 			Redirect::to('page/manage');
 		}
 	}
+
+	public function edit($pageId) {
+		$pageModel = $this->getModel('PageModel');
+		if(!$this->getModel('UserModel')->isAdmin()) {
+			Redirect::to('homepage');
+		}
+
+		if(empty($pageId)) Redirect::to('page/manage');
+		else $pageId = $pageId[0];
+
+		$oldPageVersion = $pageModel->open($pageId);
+		$msg = null;
+		if(isset($_POST['updatePageSubmit'])) {
+			if(!empty($_POST['newTitle']) && !empty($_POST['newContent'])) {
+				if($pageModel->update($pageId)) {
+					$msg = 'Successfully updated page';
+				} else {
+					$msg = 'Something went wrong. Please try again.';
+				}
+
+			}
+		}
+
+		$data = [
+			'oldVersion' => $oldPageVersion,
+			'msg' => $msg,
+		];
+
+		$this->getView('admin/editPageView', $data);
+	}
 }

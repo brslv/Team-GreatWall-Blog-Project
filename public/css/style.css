@@ -901,6 +901,9 @@ ul.non-bullet {
 label {
   font-weight: 300; }
 
+textarea {
+  cursor: text; }
+
 /**
  * layout.scss
  *

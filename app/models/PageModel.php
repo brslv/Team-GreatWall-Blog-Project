@@ -63,4 +63,18 @@ class PageModel extends MainModel {
 			}
 		}
 	}
+
+	public function update($pageId) {
+    	$newTitle = $_POST['newTitle'];
+		$newContent = $_POST['newContent'];
+		$newStatus = $_POST['newStatus'];
+
+		$stmt = $this->db->prepare('UPDATE pages SET title = :title, content = :content, status = :status WHERE id = :page_id');
+		return $stmt->execute([
+			':title' => $newTitle,
+			':content' => $newContent,
+			':status' => $newStatus,
+			':page_id' => $pageId
+		]);
+    }
 }

@@ -46,7 +46,7 @@
 								</h5>
 							</div>
 							<div class="four columns u-text-right item-options">
-								<a href="">Edit</a> | 
+								<a href="<?php echo Config::get('paths', 'root'); ?>page/edit/<?php echo $page->id; ?>">Edit</a> | 
 								<a href="<?php echo Config::get('paths', 'root'); ?>page/delete/<?php echo $page->id; ?>">Delete</a>
 							</div>
 						</div>
