@@ -109,12 +109,14 @@ class User extends Main {
         }
         if($thing[0]=='password'){
             if(isset($_POST['submit'])){
-                $newPassword = $_POST['password'];
-                if($userModel->changePassword($newPassword)) {
-                	$msg = 'You have changed your password.';
-                } else {
-                	$msg = 'Something went wrong. Please, try again.';
-                }
+            	if(!empty($_POST['password'])) {
+	                $newPassword = $_POST['password'];
+	                if($userModel->changePassword($newPassword)) {
+	                	$msg = 'You have changed your password.';
+	                } else {
+	                	$msg = 'Something went wrong. Please, try again.';
+	                }
+	            }
             }
 
             $data = [
@@ -127,13 +129,14 @@ class User extends Main {
 
 
             if(isset($_POST['submit'])){
-                $newUsername = $_POST['newUserName'];
-                if($userModel->changeUsername($newUsername)) {
-                	$msg = 'You have changed your username successfull.';
-                } else {
-                	$msg = 'Something went wrong. Please, try again.';
-                }
-
+            	if(!empty($_POST['newUserName'])) {
+	                $newUsername = $_POST['newUserName'];
+	                if($userModel->changeUsername($newUsername)) {
+	                	$msg = 'You have changed your username successfull.';
+	                } else {
+	                	$msg = 'Something went wrong. Please, try again.';
+	                }
+	            }
             }
 
             $data = [
