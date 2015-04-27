@@ -23,7 +23,7 @@
                 <?php endif; ?>
 
                 <form action="" method="POST">
-                        <input name="categoryTitle" type="text" class="full-input" placeholder="Enter category"/input> <br />
+                        <input name="categoryTitle" type="text" class="full-input" placeholder="Enter category"/> <br />
                         <input type="submit" name="categorySubmit" value="Submit new category" />
                 </form>
             </section>
@@ -42,7 +42,7 @@
                                 </h5>
                             </div>
                             <div class="four columns u-text-right item-options">
-                                <a href="">Edit</a> |
+                                <a href="<?php echo Config::get('paths', 'root'); ?>category/edit/<?php echo $category->id; ?>">Edit</a> |
                                 <a href="<?php echo Config::get('paths', 'root'); ?>category/delete/<?php echo $category->id; ?>">Delete</a>
                             </div>
                         </div>

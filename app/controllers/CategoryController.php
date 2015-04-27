@@ -37,4 +37,34 @@ class Category extends Main
 		}
 	}
 
+	public function edit($categoryId) {
+		$categoryModel = $this->getModel('CategoryModel');
+		if(!$this->getModel('UserModel')->isAdmin()) {
+			Redirect::to('homepage');
+		}
+
+		if(empty($categoryId)) Redirect::to('category/manage');
+		else $categoryId = $categoryId[0];
+
+		$oldCategoryVersion = $categoryModel->getById($categoryId);
+		$msg = null;
+		if(isset($_POST['updateCategorySubmit'])) {
+			if(!empty($_POST['newTitle'])) {
+				if($categoryModel->update($categoryId)) {
+					$msg = 'Successfully updated category';
+				} else {
+					$msg = 'Something went wrong. Please try again.';
+				}
+
+			}
+		}
+
+		$data = [
+			'oldVersion' => $oldCategoryVersion,
+			'msg' => $msg,
+		];
+
+		$this->getView('admin/editCategoryView', $data);
+	}
+
 }

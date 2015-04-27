@@ -20,6 +20,12 @@ class CategoryModel extends MainModel{
         return $catId[0]->id;
     }
 
+    public function getById($id) {
+        $stmt = $this->db->prepare('SELECT * FROM categories WHERE id = :id');
+        $stmt->execute([':id'=>$id]);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function add() {
         if(!empty(!empty($_POST['categoryTitle']))) {
             $stmt = $this->db->prepare('INSERT INTO categories(title) VALUES(:title)');
@@ -37,5 +43,15 @@ class CategoryModel extends MainModel{
                 ]);
             }
         }
+    }
+
+    public function update($categoryId) {
+        $newTitle = $_POST['newTitle'];
+
+        $stmt = $this->db->prepare('UPDATE categories SET title = :title WHERE id = :category_id');
+        return $stmt->execute([
+            ':title' => $newTitle,
+            ':category_id' => $categoryId
+        ]);
     }
 }

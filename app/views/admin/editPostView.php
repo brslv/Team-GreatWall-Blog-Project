@@ -5,15 +5,13 @@
         <div class="row">
             <div class="twelve columns">
                 <h2 class="profile-name u-large-text u-text-center">
-                    Update post
+                    Edit post
                 </h2>
             </div>
         </div>
 
         <div class="row">
             <section class="twelve columns">
-                <h5>Edit post: </h5>
-                <!-- <?php var_dump($data); ?> -->
                 <?php if($data['msg'] != null) : ?>
                     <div class="msg">
                         <?php echo $data['msg']; ?>
