@@ -1,4 +1,4 @@
-<?php require_once '../app/incl/header.php'; ?>
+<?php require_once Config::get('paths', 'incl') . 'header.php'; ?>
 
 <main class="main container row">
     <section class="eight columns">
@@ -30,11 +30,11 @@
 
         <?php endforeach; ?>
 
-        <?php require_once '../app/incl/pagination.php'; ?>
+        <?php require_once Config::get('paths', 'incl') . 'pagination.php'; ?>
 
     </section>
 
-    <?php require_once '../app/incl/sidebar.php'; ?>
+    <?php require_once Config::get('paths', 'incl') . 'sidebar.php'; ?>
 </main>
 
-<?php require_once '../app/incl/footer.php'; ?>
+<?php require_once Config::get('paths', 'incl') . 'footer.php'; ?>

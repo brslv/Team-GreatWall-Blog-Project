@@ -104,6 +104,11 @@ class TagModel extends MainModel {
 		return $result;
 	}
 
+	/**
+	 * Retrieves the most popular tags
+	 * 
+	 * @return array
+	 */
 	public function mostPopularTags() {
 		$query = 'SELECT tags.title, COUNT(*) AS tag_magnitude ';
 		$query.= 'FROM taxonomy INNER JOIN tags ';

@@ -64,6 +64,12 @@ class PageModel extends MainModel {
 		}
 	}
 
+	/**
+	 * Updates a specific page, based on it's id
+	 * 
+	 * @param  int $pageId
+	 * @return boolean
+	 */
 	public function update($pageId) {
     	$newTitle = $_POST['newTitle'];
 		$newContent = $_POST['newContent'];

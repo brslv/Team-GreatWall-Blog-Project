@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * PostController
+ */
 class Post extends Main {
 
 	/**
@@ -111,6 +114,11 @@ class Post extends Main {
         }
 	}
 
+	/**
+	 * Edit a specific post
+	 * 
+	 * @param  int $postId   
+	 */
 	public function edit($postId) {
 		$postModel = $this->getModel('PostModel');
 		$categories = $this->getModel('CategoryModel')->getCategories();

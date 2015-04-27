@@ -43,6 +43,12 @@ class SearchModel extends MainModel {
 		return $posts;
 	}
 
+	/**
+	 * Performs a search by category name
+	 * 
+	 * @param  string $catName
+	 * @return array
+	 */
     public function searchByCategory($catName)
     {
         $catName = trim(htmlspecialchars($catName));

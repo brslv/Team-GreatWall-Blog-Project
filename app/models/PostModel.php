@@ -105,6 +105,12 @@ class PostModel extends MainModel {
         }
     }
 
+    /**
+     * Updates a specific post, based on it's id
+     * 
+     * @param  int $postId
+     * @return boolean
+     */
     public function update($postId) {
     	$newTitle = $_POST['newTitle'];
 		$newContent = $_POST['newContent'];

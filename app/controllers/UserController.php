@@ -64,7 +64,6 @@ class User extends Main {
 	/**
 	 * Gets the profileView view, which displays information about the user
 	 *
-	 *
 	 */
 	public function me() {
 		if (!isset($_SESSION['username'])) {
@@ -96,6 +95,11 @@ class User extends Main {
 		Redirect::to('homepage');
 	}
 
+	/**
+	 * Change password and username
+	 * 
+	 * @param  stirng $thing Provide 'password' / 'username', based on what the client whants to change
+	 */
     public  function change($thing){
         $userModel = $this->getModel('UserModel');
         $msg = null;

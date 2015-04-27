@@ -29,6 +29,10 @@ class Page extends Main {
 
 	}
 
+	/**
+	 * Manage page
+	 * 
+	 */
 	public function manage() {
 		$pageModel = $this->getModel('PageModel');
 		$pages = $pageModel->getAll();
@@ -47,6 +51,11 @@ class Page extends Main {
 		$this->getView('admin/managePagesView', $data);
 	}
 
+	/**
+	 * Delete page
+	 * 
+	 * @param  int $id   
+	 */
 	public function delete($id) {
 		if(!isset($_SESSION['role'])) {
 			if($id == null || $_SESSION['role'] != 'admin') {
@@ -59,6 +68,11 @@ class Page extends Main {
 		}
 	}
 
+	/**
+	 * Edit page
+	 * 
+	 * @param  int $pageId   
+	 */
 	public function edit($pageId) {
 		$pageModel = $this->getModel('PageModel');
 		if(!$this->getModel('UserModel')->isAdmin()) {

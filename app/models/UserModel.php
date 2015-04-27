@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * UserModel
+ */
 class UserModel extends MainModel {
 
 	/**
@@ -32,9 +35,6 @@ class UserModel extends MainModel {
 	 * @return boolean
 	 */
 	public function register() {
-		////////////////////////////////////////
-		// TODO: Each user can add comments //
-		////////////////////////////////////////
 		if (!empty($_POST['username'])
 			&& !empty($_POST['firstname']) && !empty($_POST['lastname'])
 			&& !empty($_POST['password']) && !empty($_POST['email'])) {

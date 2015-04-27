@@ -1,6 +1,4 @@
-
-
-<?php require_once '../app/incl/header-tiny.php'; ?>
+<?php require_once Config::get('paths', 'incl') . 'header-tiny.php'; ?>
 
     <main class="main container row">
         <section class="twelve columns">
@@ -23,4 +21,4 @@
         </section>
     </main>
     
-<?php require_once '../app/incl/footer.php'; ?>
+<?php require_once Config::get('paths', 'incl') . 'footer.php'; ?>

@@ -6,6 +6,10 @@
 class Category extends Main
 {
 	
+	/**
+	 * Manage category
+	 * 
+	 */
 	public function manage() {
 		$categoryModel = $this->getModel('CategoryModel');
 		$categories = $categoryModel->getCategories();
@@ -25,6 +29,11 @@ class Category extends Main
 		$this->getView('admin/manageCategoriesView', $data);
 	}
 
+	/**
+	 * Delete category
+	 * 
+	 * @param  int $id  
+	 */
 	public function delete($id) {
 		if(!isset($_SESSION['role'])) {
 			if($id == null || $_SESSION['role'] != 'admin') {
@@ -37,6 +46,11 @@ class Category extends Main
 		}
 	}
 
+	/**
+	 * Edit category
+	 * 
+	 * @param  int $categoryId   
+	 */
 	public function edit($categoryId) {
 		$categoryModel = $this->getModel('CategoryModel');
 		if(!$this->getModel('UserModel')->isAdmin()) {

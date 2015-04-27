@@ -5,6 +5,10 @@
  */
 class Search extends Main {
 
+	/**
+	 * The default method
+	 * 
+	 */
 	public function index() {
 		Redirect::to('homepage');
 	}
@@ -35,6 +39,10 @@ class Search extends Main {
 		$this->getView('searchView', $data);
 	}
 
+	/**
+	 * Searches by category
+	 * 
+	 */
     public function category(){
         if(isset($_GET['name']) && !empty(trim($_GET['name']))) {
             $name = rawurldecode($_GET['name']);

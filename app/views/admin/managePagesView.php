@@ -1,5 +1,4 @@
-<?php // TODO: add Config::get('paths', 'incl') to all header and footer requires. ?>
-<?php require_once '../app/incl/header-tiny.php'; ?> 
+<?php require_once Config::get('paths', 'incl') . 'header-tiny.php'; ?>
 
     <main class="main-admin">
         <div class="row">
@@ -56,4 +55,4 @@
         </div>
     </main>
     
-<?php require_once '../app/incl/footer.php'; ?>
+<?php require_once Config::get('paths', 'incl') . 'footer.php'; ?>
